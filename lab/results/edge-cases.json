@@ -1,0 +1,200 @@
+[
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": false,
+  "t": "base",
+  "page": 1170,
+  "dialog": 1169,
+  "popover": 1190,
+  "late": 1012
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": false,
+  "t": "dom overlay",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": false,
+  "t": "dom overlay popover",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": false,
+  "t": "html dataurl",
+  "page": 0,
+  "dialog": 1169,
+  "popover": 1190,
+  "late": 0
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": false,
+  "t": "overlay opacity0",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": false,
+  "t": "html dataurl + dialog/popover",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": false,
+  "t": "overlay + dialog/popover",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": true,
+  "t": "base",
+  "page": 1170,
+  "dialog": 1169,
+  "popover": 1190,
+  "late": 1012
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": true,
+  "t": "dom overlay",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": true,
+  "t": "dom overlay popover",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": true,
+  "t": "html dataurl",
+  "page": 1170,
+  "dialog": 1169,
+  "popover": 1190,
+  "late": 1012
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": true,
+  "t": "overlay opacity0",
+  "page": 1170,
+  "dialog": 1169,
+  "popover": 1190,
+  "late": 1012
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": true,
+  "t": "html dataurl + dialog/popover",
+  "page": 1170,
+  "dialog": 0,
+  "popover": 0,
+  "late": 1012
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "csp": true,
+  "t": "overlay + dialog/popover",
+  "page": 1170,
+  "dialog": 0,
+  "popover": 0,
+  "late": 1012
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "csp": false,
+  "t": "base",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "csp": false,
+  "t": "html opacity",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "csp": false,
+  "t": "stroke",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "csp": false,
+  "t": "html opacity + dialog/popover",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "csp": true,
+  "t": "base",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "csp": true,
+  "t": "html opacity",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "csp": true,
+  "t": "stroke",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "csp": true,
+  "t": "html opacity + dialog/popover",
+  "page": 0,
+  "dialog": 0,
+  "popover": 0,
+  "late": 0
+ }
+]

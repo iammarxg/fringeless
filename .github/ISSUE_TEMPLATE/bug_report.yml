@@ -1,0 +1,45 @@
+name: Something is wrong
+description: A page looks broken, or a setting does not work
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens
+      description: What you did, what you expected, and what you saw. Screenshots help; please use PNG.
+    validations: { required: true }
+  - type: input
+    id: url
+    attributes:
+      label: Page address
+      description: Leave out anything private.
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Brave 1.85, Firefox 157
+    validations: { required: true }
+  - type: dropdown
+    id: os
+    attributes:
+      label: System
+      options: [Windows 11, Windows 10, macOS, Linux]
+    validations: { required: true }
+  - type: input
+    id: version
+    attributes:
+      label: Fringeless version
+      placeholder: 1.0.0 (Settings, Guide)
+    validations: { required: true }
+  - type: input
+    id: screen
+    attributes:
+      label: Screen model and scale
+      placeholder: XG27AQDMGR, 100%
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checked
+      options:
+        - label: It stops when I turn Fringeless off for the site
+        - label: I reloaded the page

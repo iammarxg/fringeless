@@ -1,0 +1,44 @@
+{
+  "name": "fringeless",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Clearer text for OLED screens.",
+  "license": "GPL-3.0-only",
+  "homepage": "https://github.com/iammarxg/fringeless",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iammarxg/fringeless.git"
+  },
+  "bugs": "https://github.com/iammarxg/fringeless/issues",
+  "scripts": {
+    "dev": "wxt",
+    "build": "npm run build:chrome && npm run build:firefox",
+    "build:chrome": "wxt build -b chrome",
+    "build:firefox": "wxt build -b firefox",
+    "build-for-amo": "npm run build:firefox",
+    "zip": "wxt zip -b chrome && wxt zip -b firefox",
+    "check": "wxt prepare && tsc --noEmit && node tools/release.mjs check",
+    "test": "vitest run",
+    "release": "node tools/release.mjs prepare",
+    "e2e:build": "node tests/e2e/build.mjs",
+    "e2e": "npm run e2e:build && node tests/e2e/run.mjs",
+    "e2e:more": "node tests/e2e/more.mjs && node tests/e2e/ui.mjs",
+    "images": "node tools/images/make.mjs",
+    "lab": "node lab/runner/run.mjs",
+    "lab:cases": "node lab/runner/edge-cases.mjs",
+    "lab:perf": "node lab/runner/perf.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.1",
+    "pngjs": "^7.0.0",
+    "preact": "^11.2.0",
+    "selenium-webdriver": "^4.54.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.1",
+    "wxt": "^0.21.5"
+  }
+}

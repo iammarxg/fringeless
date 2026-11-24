@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>fringeless-lab</title>
+<style>
+  :root { --bg:#fff; --fg:#000; --card:#f3f3f3; --link:#0645ad; }
+  :root.dark { --bg:#000; --fg:#fff; --card:#181818; --link:#7ab7ff; }
+  * { box-sizing:border-box }
+  html { background:var(--bg); color-scheme:light; overflow-y:scroll; scrollbar-width:none }
+  html.dark { color-scheme:dark }
+  body { margin:0; padding:40px 24px 24px; background:var(--bg); color:var(--fg); font:16px/1.4 "Segoe UI",system-ui,sans-serif; height:4000px; position:relative }
+  .z { width:400px; margin:0 0 6px; white-space:nowrap; overflow:hidden }
+  a { color:var(--link) }
+  #fid1,#fid2 { position:fixed; width:12px; height:12px; background:#f0f; z-index:9 }
+  #fid1 { left:0; top:0 } #fid2 { right:0; bottom:0 }
+  #fixed { position:fixed; left:480px; top:40px; width:260px; background:var(--bg) }
+  #stickywrap { position:absolute; left:480px; top:80px; width:260px; height:1200px }
+  #sticky { position:sticky; top:90px; background:var(--bg) }
+  #scroller { position:absolute; left:480px; top:130px; width:260px; height:60px; overflow:auto; scrollbar-width:none; background:var(--bg) }
+  #card { position:absolute; left:480px; top:200px; width:260px; background:var(--card) }
+  #glass { position:absolute; left:480px; top:235px; width:260px; background:rgb(127 127 127 / .2) }
+  #comp { position:absolute; left:480px; top:270px; width:260px; will-change:transform; background:var(--bg) }
+  #shadow { position:absolute; left:480px; top:305px; width:260px }
+  iframe { position:absolute; left:480px; width:260px; height:30px; border:0 }
+  #if1 { top:340px } #if2 { top:375px }
+  #img { position:absolute; left:480px; top:415px }
+  #cv { position:absolute; left:480px; top:500px }
+  input,textarea { font:inherit; color:inherit; background:var(--bg); border:0; padding:0; width:400px; display:block }
+  code { font:14px Consolas,"DejaVu Sans Mono",Menlo,monospace }
+</style>
+</head>
+<body>
+<div id="fid1"></div><div id="fid2"></div>
+<div class="z" id="t11" style="font-size:11px">Illiwm HAVE 11px quick brown fox jumps over the lazy dog</div>
+<div class="z" id="t13" style="font-size:13px">Illiwm HAVE 13px quick brown fox jumps over the lazy</div>
+<div class="z" id="t16">Illiwm HAVE 16px quick brown fox jumps over</div>
+<div class="z" id="t20" style="font-size:20px">Illiwm HAVE 20px quick brown fox</div>
+<div class="z" id="t32" style="font-size:32px">Illiwm HAVE 32px fox</div>
+<div class="z" id="light" style="font-weight:300">Light weight Illiwm HAVE quick brown fox</div>
+<div class="z" id="bold" style="font-weight:700">Bold weight Illiwm HAVE quick brown fox</div>
+<div class="z" id="code"><code>const fill = (il, li) =&gt; il !== li; // 14px</code></div>
+<div class="z" id="nested"><p style="margin:0">Nested <b>bold <i>italic</i></b> <span>span <em>em</em></span> text Illi</p></div>
+<div class="z" id="link"><a href="#">Colored link text Illiwm HAVE quick</a></div>
+<input class="z" id="inp" value="Input value Illiwm HAVE quick brown">
+<textarea class="z" id="ta" rows="1">Textarea Illiwm HAVE quick brown</textarea>
+<div id="fixed">Fixed Illiwm HAVE quick</div>
+<div id="stickywrap"><div id="sticky">Sticky Illiwm HAVE quick</div></div>
+<div id="scroller"><div style="height:300px">Scroller Illiwm HAVE quick</div></div>
+<div id="card">Card opaque Illiwm HAVE quick</div>
+<div id="glass">Translucent card Illiwm HAVE</div>
+<div id="comp">Composited layer Illiwm HAVE</div>
+<div id="shadow"></div>
+<iframe id="if1" src="/frame.html"></iframe>
+<iframe id="if2"></iframe>
+<canvas id="img" width="260" height="70"></canvas>
+<canvas id="cv" width="260" height="30"></canvas>
+<script>
+  const q = new URLSearchParams(location.search), dark = q.get('scheme') === 'dark';
+  document.documentElement.classList.toggle('dark', dark);
+  const sr = document.getElementById('shadow').attachShadow({ mode: 'closed' });
+  sr.innerHTML = '<div style="background:inherit">Closed shadow Illiwm HAVE</div>';
+  const f = location.port, s = '?scheme=' + (dark ? 'dark' : 'light');
+  document.getElementById('if1').src = '/frame.html' + s;
+  document.getElementById('if2').src = `http://${location.hostname === 'localhost' ? '127.0.0.1' : 'localhost'}:${f}/frame.html` + s;
+  { // photo-like colour content that must not change
+    const c = document.getElementById('img').getContext('2d');
+    for (let x = 0; x < 260; x++) for (let y = 0; y < 70; y++) {
+      c.fillStyle = `hsl(${x * 1.4} ${40 + y * .8}% ${30 + 30 * Math.sin((x + y) / 9)}%)`; c.fillRect(x, y, 1, 1);
+    }
+    c.fillStyle = '#ff0'; c.fillRect(20, 20, 30, 30); c.fillStyle = '#fff'; c.fillRect(70, 20, 1, 30); c.fillRect(80, 20, 30, 1);
+  }
+  { const c = document.getElementById('cv').getContext('2d', { alpha: false });
+    c.fillStyle = dark ? '#000' : '#fff'; c.fillRect(0, 0, 260, 30); c.fillStyle = dark ? '#fff' : '#000';
+    c.font = '16px "Segoe UI",system-ui'; c.fillText('Canvas LCD Illiwm HAVE', 0, 20);
+  }
+</script>
+</body></html>

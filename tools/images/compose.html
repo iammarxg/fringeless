@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: Inter; font-weight: 100 900; src: url('/public/fonts/InterVariable.woff2') format('woff2'); }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: #000; color: #fafafa; font: 400 22px/1.4 Inter, sans-serif; overflow: hidden; }
+  .sheet { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+  img { display: block; }
+  .px { image-rendering: pixelated; width: 100%; }
+  h1 { font-weight: 650; letter-spacing: -0.025em; line-height: 1.08; }
+  .muted { color: #9a9a9a; }
+
+  /* before / after */
+  .ba { display: grid; grid-template-rows: auto 1fr auto; padding: 56px 64px 48px; gap: 36px; }
+  .ba h1 { font-size: 54px; }
+  .ba .pairs { display: grid; grid-template-columns: 562px 562px; gap: 20px 28px; align-content: center; }
+  .ba .lab { font-size: 24px; font-weight: 560; }
+  .ba figure { border-radius: 14px; overflow: hidden; border: 1px solid rgb(255 255 255 / .16); }
+  .ba .foot { font-size: 19px; color: #9a9a9a; }
+
+  .bare { padding-block: 48px; grid-template-rows: 1fr; }
+  .bare h1, .bare .foot { display: none; }
+
+  /* popup over a page */
+  .over { background: #000; }
+  .over .page { position: absolute; left: 0; top: 0; }
+  .over .pop { position: absolute; right: 40px; top: 32px; border-radius: 14px; overflow: hidden; outline: 1px solid rgb(255 255 255 / .2); box-shadow: 0 30px 80px 10px rgb(0 0 0 / .9); }
+
+  /* tiles */
+  .tile { display: grid; align-items: center; }
+  .tile .word { font-weight: 680; letter-spacing: -0.015em; line-height: 1; }
+  .tile .fr { text-shadow: calc(var(--s) * -1) 0 #ff4fa3, var(--s) 0 #4fd69b; mix-blend-mode: screen; }
+  .tile .strip { border-radius: 14px; overflow: hidden; border: 1px solid rgb(255 255 255 / .16); }
+  .icon { display: grid; place-items: center; background: transparent; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const q = new URLSearchParams(location.search), kind = q.get('kind'), C = '/lab/captures/promo/';
+const fig = (n) => `<figure><img class="px" src="${C}${n}.png"></figure>`;
+const views = {
+  ba: () => `<div class="sheet ba${q.get('foot') === '' ? ' bare' : ''}"><h1>Clearer web text on OLED screens</h1>
+    <div class="pairs"><div class="lab">Without Fringeless</div><div class="lab">With Fringeless</div>
+    ${fig('crop-dark-off')}${fig('crop-dark-on')}${fig('crop-light-off')}${fig('crop-light-on')}</div>
+    <p class="foot">${q.get('foot') ?? 'Real pixels from Chrome on Windows with ClearType on, enlarged. 16 px Segoe UI.'}</p></div>`,
+  popup: () => `<div class="sheet over"><img class="page" src="${C}page.png" width="1280"><img class="pop" src="${C}popup.png" width="${q.get('w')}"></div>`,
+  small: () => `<div class="sheet tile" style="padding:34px 36px;--s:3px"><div><div class="word fr" style="font-size:62px">Fringeless</div><p style="font-size:25px;font-weight:500;margin-top:16px;letter-spacing:-.01em">Clearer text for OLED screens</p></div></div>`,
+  wide: () => `<div class="sheet tile" style="grid-template-columns:1.05fr 1fr;gap:56px;padding:0 72px;--s:5px"><div><div class="word fr" style="font-size:${q.get('f') ?? 112}px">Fringeless</div><p style="font-size:${q.get('p') ?? 38}px;font-weight:500;margin-top:24px;letter-spacing:-.015em;line-height:1.2">Clearer text for OLED screens</p></div>
+    <div style="display:grid;gap:18px"><div class="strip"><img class="px" src="${C}crop-dark-off.png"></div><div class="strip"><img class="px" src="${C}crop-dark-on.png"></div></div></div>`,
+  icon: () => `<div class="sheet icon"><img src="/tools/images/icon.svg" width="${q.get('w')}" height="${q.get('w')}"></div>`,
+};
+if (kind === 'icon') document.body.style.background = 'transparent';
+document.getElementById('root').innerHTML = views[kind]();
+Promise.all([document.fonts.load('600 20px Inter'), ...[...document.images].map((i) => i.decode())]).then(() => { document.title = 'ready'; });
+</script>
+</body>
+</html>

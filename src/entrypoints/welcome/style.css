@@ -1,0 +1,7 @@
+main { max-width: 62rem; margin: 0 auto; padding: clamp(2rem, 6vw, 4.5rem) 1.25rem 6rem; display: grid; gap: clamp(3rem, 7vw, 5rem); }
+h1 { font-size: clamp(2.5rem, 6vw, 3.9rem); }
+.lede { font-size: var(--step-2); line-height: 1.4; max-width: 46ch; letter-spacing: -0.01em; }
+.preview { max-width: 20rem; }
+.target { display: block; width: 100%; height: 150px; border-radius: var(--radius-m); background: #000; image-rendering: pixelated; }
+:root[data-theme='light'] .target { outline: 1px solid var(--line-strong); }
+.test { gap: 1rem; }

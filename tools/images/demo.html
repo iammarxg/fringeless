@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>fringeless-lab</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #000; color: #e8e8e8; font: 16px/1.6 "Segoe UI", sans-serif; }
+  html.light { color-scheme: light; }
+  html.light body { background: #fff; color: #1b1b1b; }
+  i.mark { position: absolute; left: 0; top: 0; width: 2px; height: 2px; background: #f0f; }
+  main { width: 620px; margin: 0; padding: 40px 48px; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; font-weight: 600; }
+  .by { opacity: .65; font-size: 14px; margin: 0 0 24px; }
+  h2 { font-size: 20px; margin: 28px 0 8px; font-weight: 600; }
+  p { margin: 0 0 14px; }
+  a { color: #6cb2ff; } html.light a { color: #0b57d0; }
+</style>
+</head>
+<body>
+<i class="mark"></i>
+<main>
+  <h1>Why small text has colored edges</h1>
+  <p class="by">Reading on an OLED monitor, part two</p>
+  <p><span id="crop">Clear little letters will still</span> look soft when every stem carries a red edge on one side and a blue edge on the other.</p>
+  <p>Subpixel smoothing borrows the red, green and blue parts of each pixel to draw thinner shapes. It expects those parts in one order. When a panel uses another, <a href="#">the color ends up beside the letter</a> and not inside it.</p>
+  <h2>What to look for</h2>
+  <p>Find a word with many straight stems, such as illicit, millilitre or Illinois, and look closely at the left and right edges.</p>
+  <p>On white text over black the edges are usually easier to see. Headings show it too, as a faint glow along each vertical stroke.</p>
+  <h2>What helps</h2>
+  <p>Drawing the same letters in shades of gray removes the color. The strokes may look a little lighter or heavier, so it helps to adjust the weight until it reads well to you.</p>
+</main>
+<script>if (location.search.includes('light')) document.documentElement.className = 'light';</script>
+</body>
+</html>

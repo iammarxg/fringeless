@@ -1,0 +1,112 @@
+[
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "size": "2384x1261x1",
+  "t": "base",
+  "frames": 1557,
+  "mean": 4.18,
+  "p95": 4.3,
+  "p99": 4.4,
+  "gpu3d": 2.92
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "size": "2384x1261x1",
+  "t": "html filter dataurl",
+  "frames": 1547,
+  "mean": 4.2,
+  "p95": 4.3,
+  "p99": 4.3,
+  "gpu3d": 3.93
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "size": "2384x1261x1",
+  "t": "overlay opacity0",
+  "frames": 1556,
+  "mean": 4.18,
+  "p95": 4.3,
+  "p99": 4.3,
+  "gpu3d": 2.85
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "size": "2384x1261x1",
+  "t": "overlay visible",
+  "frames": 1557,
+  "mean": 4.18,
+  "p95": 4.3,
+  "p99": 4.3,
+  "gpu3d": 4.35
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "size": "2384x1261x1",
+  "t": "leaf opacity",
+  "frames": 1554,
+  "mean": 4.18,
+  "p95": 4.3,
+  "p99": 5.6,
+  "gpu3d": 3.77
+ },
+ {
+  "browser": "Chrome/158.0.8127.37",
+  "size": "2384x1261x1",
+  "t": "base again",
+  "frames": 1556,
+  "mean": 4.18,
+  "p95": 4.3,
+  "p99": 4.4,
+  "gpu3d": 2.91
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "size": "820x695x1",
+  "t": "base",
+  "frames": 1561,
+  "mean": 4.16,
+  "p95": 5,
+  "p99": 5,
+  "gpu3d": 2.26
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "size": "820x695x1",
+  "t": "html filter opacity",
+  "frames": 1557,
+  "mean": 4.18,
+  "p95": 5,
+  "p99": 5,
+  "gpu3d": 3.83
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "size": "820x695x1",
+  "t": "stroke transparent",
+  "frames": 1557,
+  "mean": 4.17,
+  "p95": 5,
+  "p99": 5,
+  "gpu3d": 3.33
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "size": "820x695x1",
+  "t": "html mask",
+  "frames": 1562,
+  "mean": 4.16,
+  "p95": 5,
+  "p99": 5,
+  "gpu3d": 9.25
+ },
+ {
+  "browser": "Firefox/157.0.1",
+  "size": "820x695x1",
+  "t": "base again",
+  "frames": 1563,
+  "mean": 4.16,
+  "p95": 5,
+  "p99": 5,
+  "gpu3d": 2.3
+ }
+]

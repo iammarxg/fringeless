@@ -1,0 +1,1838 @@
+[
+{
+"px": 13,
+"dark": true,
+"panel": "RGB stripe",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 4.19,
+"luma": 10.12
+},
+{
+"px": 13,
+"dark": true,
+"panel": "RGB stripe",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 1.72,
+"luma": 10.49
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD (ClearType)",
+"chroma": 4.79,
+"luma": 10.15
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Grayscale",
+"chroma": 1.25,
+"luma": 10.56
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.2",
+"chroma": 1.44,
+"luma": 10.36
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.5",
+"chroma": 1.94,
+"luma": 10.16
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.9",
+"chroma": 2.79,
+"luma": 10.24
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD + filter 0.2",
+"chroma": 4.62,
+"luma": 9.87
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD + filter 0.9",
+"chroma": 5.08,
+"luma": 9.48
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD (ClearType)",
+"chroma": 5.02,
+"luma": 10.16
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Grayscale",
+"chroma": 1.8,
+"luma": 10.41
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.2",
+"chroma": 1.45,
+"luma": 10.15
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.5",
+"chroma": 1.27,
+"luma": 9.86
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.9",
+"chroma": 1.8,
+"luma": 9.87
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD + filter 0.2",
+"chroma": 4.74,
+"luma": 9.86
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD + filter 0.9",
+"chroma": 4.67,
+"luma": 9.34
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD (ClearType)",
+"chroma": 4.37,
+"luma": 10.11
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Grayscale",
+"chroma": 1.17,
+"luma": 10.51
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.2",
+"chroma": 1.29,
+"luma": 10.31
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.5",
+"chroma": 1.49,
+"luma": 10.05
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.9",
+"chroma": 1.74,
+"luma": 9.93
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD + filter 0.2",
+"chroma": 4.38,
+"luma": 9.96
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD + filter 0.9",
+"chroma": 4.66,
+"luma": 9.5
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD (ClearType)",
+"chroma": 4.31,
+"luma": 10.11
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Grayscale",
+"chroma": 1.38,
+"luma": 10.46
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.2",
+"chroma": 1.33,
+"luma": 10.24
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.5",
+"chroma": 1.3,
+"luma": 9.91
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.9",
+"chroma": 1.41,
+"luma": 9.69
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD + filter 0.2",
+"chroma": 4.3,
+"luma": 9.95
+},
+{
+"px": 13,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD + filter 0.9",
+"chroma": 4.52,
+"luma": 9.39
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 5.64,
+"luma": 10.14
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 3.5,
+"luma": 10.52
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 3.15,
+"luma": 10.45
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.74,
+"luma": 10.38
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 2.39,
+"luma": 10.4
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 5.45,
+"luma": 10.09
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 4.88,
+"luma": 10.09
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 5.66,
+"luma": 10.14
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 3.52,
+"luma": 10.53
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 3.16,
+"luma": 10.44
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.72,
+"luma": 10.35
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 2.36,
+"luma": 10.35
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 5.45,
+"luma": 10.1
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 4.86,
+"luma": 10.17
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 5.66,
+"luma": 10.14
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 3.47,
+"luma": 10.52
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 3.13,
+"luma": 10.46
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.74,
+"luma": 10.41
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 2.43,
+"luma": 10.44
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 5.47,
+"luma": 10.07
+},
+{
+"px": 13,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 4.89,
+"luma": 10.03
+},
+{
+"px": 13,
+"dark": false,
+"panel": "RGB stripe",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 2.4,
+"luma": 5.04
+},
+{
+"px": 13,
+"dark": false,
+"panel": "RGB stripe",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 1.9,
+"luma": 5.13
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD (ClearType)",
+"chroma": 2.75,
+"luma": 5.1
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Grayscale",
+"chroma": 1.54,
+"luma": 5.17
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.2",
+"chroma": 1.83,
+"luma": 5.37
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.36,
+"luma": 5.56
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.9",
+"chroma": 3.27,
+"luma": 5.79
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD + filter 0.2",
+"chroma": 2.98,
+"luma": 5.28
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD + filter 0.9",
+"chroma": 4.08,
+"luma": 5.71
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD (ClearType)",
+"chroma": 2.5,
+"luma": 5.0
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Grayscale",
+"chroma": 1.76,
+"luma": 5.06
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.2",
+"chroma": 1.69,
+"luma": 5.25
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.5",
+"chroma": 1.67,
+"luma": 5.43
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.9",
+"chroma": 2.11,
+"luma": 5.53
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD + filter 0.2",
+"chroma": 2.53,
+"luma": 5.16
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD + filter 0.9",
+"chroma": 3.01,
+"luma": 5.39
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD (ClearType)",
+"chroma": 2.67,
+"luma": 5.26
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Grayscale",
+"chroma": 1.58,
+"luma": 5.18
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.2",
+"chroma": 1.6,
+"luma": 5.31
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.5",
+"chroma": 1.72,
+"luma": 5.48
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.9",
+"chroma": 2.01,
+"luma": 5.72
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD + filter 0.2",
+"chroma": 2.73,
+"luma": 5.36
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD + filter 0.9",
+"chroma": 2.95,
+"luma": 5.68
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD (ClearType)",
+"chroma": 2.41,
+"luma": 5.08
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Grayscale",
+"chroma": 1.68,
+"luma": 5.12
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.2",
+"chroma": 1.58,
+"luma": 5.25
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.5",
+"chroma": 1.48,
+"luma": 5.36
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.9",
+"chroma": 1.58,
+"luma": 5.45
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD + filter 0.2",
+"chroma": 2.45,
+"luma": 5.16
+},
+{
+"px": 13,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD + filter 0.9",
+"chroma": 2.58,
+"luma": 5.34
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 3.31,
+"luma": 5.02
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 2.81,
+"luma": 5.13
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 2.52,
+"luma": 5.18
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.09,
+"luma": 5.24
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 1.58,
+"luma": 5.3
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 3.09,
+"luma": 5.06
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 2.45,
+"luma": 5.15
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 3.32,
+"luma": 5.02
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 2.81,
+"luma": 5.11
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 2.51,
+"luma": 5.18
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.07,
+"luma": 5.24
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 1.56,
+"luma": 5.3
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 3.1,
+"luma": 5.05
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 2.47,
+"luma": 5.12
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 3.31,
+"luma": 5.01
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 2.8,
+"luma": 5.14
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 2.51,
+"luma": 5.18
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.08,
+"luma": 5.24
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 1.6,
+"luma": 5.29
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 3.09,
+"luma": 5.06
+},
+{
+"px": 13,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 2.45,
+"luma": 5.16
+},
+{
+"px": 16,
+"dark": true,
+"panel": "RGB stripe",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 3.1,
+"luma": 8.76
+},
+{
+"px": 16,
+"dark": true,
+"panel": "RGB stripe",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 1.95,
+"luma": 9.03
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD (ClearType)",
+"chroma": 3.99,
+"luma": 8.81
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Grayscale",
+"chroma": 1.19,
+"luma": 9.11
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.2",
+"chroma": 1.52,
+"luma": 8.88
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.23,
+"luma": 8.64
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.9",
+"chroma": 3.42,
+"luma": 8.87
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD + filter 0.2",
+"chroma": 3.64,
+"luma": 8.49
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD + filter 0.9",
+"chroma": 4.26,
+"luma": 8.2
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD (ClearType)",
+"chroma": 4.37,
+"luma": 8.83
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Grayscale",
+"chroma": 2.2,
+"luma": 8.94
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.2",
+"chroma": 1.69,
+"luma": 8.65
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.5",
+"chroma": 1.32,
+"luma": 8.27
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.9",
+"chroma": 2.05,
+"luma": 8.35
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD + filter 0.2",
+"chroma": 3.86,
+"luma": 8.48
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD + filter 0.9",
+"chroma": 3.67,
+"luma": 7.92
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD (ClearType)",
+"chroma": 3.32,
+"luma": 8.76
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Grayscale",
+"chroma": 1.21,
+"luma": 9.13
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.2",
+"chroma": 1.39,
+"luma": 8.94
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.5",
+"chroma": 1.67,
+"luma": 8.67
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.9",
+"chroma": 2.01,
+"luma": 8.68
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD + filter 0.2",
+"chroma": 3.26,
+"luma": 8.62
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD + filter 0.9",
+"chroma": 3.55,
+"luma": 8.17
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD (ClearType)",
+"chroma": 3.24,
+"luma": 8.74
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Grayscale",
+"chroma": 1.41,
+"luma": 9.01
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.2",
+"chroma": 1.33,
+"luma": 8.8
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.5",
+"chroma": 1.31,
+"luma": 8.45
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.9",
+"chroma": 1.49,
+"luma": 8.23
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD + filter 0.2",
+"chroma": 3.16,
+"luma": 8.6
+},
+{
+"px": 16,
+"dark": true,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD + filter 0.9",
+"chroma": 3.38,
+"luma": 8.02
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 4.5,
+"luma": 8.76
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 3.57,
+"luma": 9.04
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 3.15,
+"luma": 9.0
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.66,
+"luma": 8.93
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 2.32,
+"luma": 8.9
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 4.26,
+"luma": 8.74
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 3.75,
+"luma": 8.71
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 4.52,
+"luma": 8.75
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 3.59,
+"luma": 9.03
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 3.17,
+"luma": 8.98
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.63,
+"luma": 8.88
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 2.22,
+"luma": 8.84
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 4.27,
+"luma": 8.75
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 3.68,
+"luma": 8.81
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 4.52,
+"luma": 8.76
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 3.52,
+"luma": 9.05
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 3.11,
+"luma": 9.02
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.65,
+"luma": 8.97
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 2.41,
+"luma": 8.96
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 4.28,
+"luma": 8.73
+},
+{
+"px": 16,
+"dark": true,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 3.8,
+"luma": 8.64
+},
+{
+"px": 16,
+"dark": false,
+"panel": "RGB stripe",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 2.08,
+"luma": 4.87
+},
+{
+"px": 16,
+"dark": false,
+"panel": "RGB stripe",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 2.01,
+"luma": 4.95
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD (ClearType)",
+"chroma": 2.75,
+"luma": 4.96
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Grayscale",
+"chroma": 1.55,
+"luma": 5.01
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.2",
+"chroma": 2.0,
+"luma": 5.27
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.5",
+"chroma": 2.84,
+"luma": 5.54
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "Gray + filter 0.9",
+"chroma": 4.26,
+"luma": 5.96
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD + filter 0.2",
+"chroma": 3.14,
+"luma": 5.19
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 1.0,
+"opt": "LCD + filter 0.9",
+"chroma": 4.84,
+"luma": 5.82
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD (ClearType)",
+"chroma": 2.36,
+"luma": 4.8
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Grayscale",
+"chroma": 1.85,
+"luma": 4.83
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.2",
+"chroma": 1.7,
+"luma": 5.08
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.5",
+"chroma": 1.71,
+"luma": 5.32
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "Gray + filter 0.9",
+"chroma": 2.47,
+"luma": 5.47
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD + filter 0.2",
+"chroma": 2.47,
+"luma": 5.01
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RWBG",
+"wshare": 0.5,
+"opt": "LCD + filter 0.9",
+"chroma": 3.25,
+"luma": 5.3
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD (ClearType)",
+"chroma": 2.51,
+"luma": 5.15
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Grayscale",
+"chroma": 1.55,
+"luma": 5.0
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.2",
+"chroma": 1.61,
+"luma": 5.17
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.5",
+"chroma": 1.8,
+"luma": 5.38
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "Gray + filter 0.9",
+"chroma": 2.2,
+"luma": 5.81
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD + filter 0.2",
+"chroma": 2.64,
+"luma": 5.28
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 1.0,
+"opt": "LCD + filter 0.9",
+"chroma": 3.07,
+"luma": 5.76
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD (ClearType)",
+"chroma": 2.13,
+"luma": 4.91
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Grayscale",
+"chroma": 1.69,
+"luma": 4.94
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.2",
+"chroma": 1.56,
+"luma": 5.08
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.5",
+"chroma": 1.42,
+"luma": 5.21
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "Gray + filter 0.9",
+"chroma": 1.58,
+"luma": 5.33
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD + filter 0.2",
+"chroma": 2.23,
+"luma": 5.0
+},
+{
+"px": 16,
+"dark": false,
+"panel": "WOLED RGWB",
+"wshare": 0.5,
+"opt": "LCD + filter 0.9",
+"chroma": 2.51,
+"luma": 5.16
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 3.04,
+"luma": 4.86
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 2.74,
+"luma": 4.97
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 2.43,
+"luma": 5.04
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 1.98,
+"luma": 5.1
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 1.47,
+"luma": 5.15
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 2.81,
+"luma": 4.9
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 27\" 1440p",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 2.08,
+"luma": 4.98
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 3.04,
+"luma": 4.86
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 2.75,
+"luma": 4.96
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 2.42,
+"luma": 5.03
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 1.95,
+"luma": 5.1
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 1.43,
+"luma": 5.15
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 2.82,
+"luma": 4.9
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 34\" gen1",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 2.11,
+"luma": 4.97
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD (ClearType)",
+"chroma": 3.06,
+"luma": 4.85
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Grayscale",
+"chroma": 2.71,
+"luma": 4.98
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.2",
+"chroma": 2.4,
+"luma": 5.04
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.5",
+"chroma": 1.97,
+"luma": 5.1
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "Gray + filter 0.9",
+"chroma": 1.5,
+"luma": 5.14
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD + filter 0.2",
+"chroma": 2.83,
+"luma": 4.89
+},
+{
+"px": 16,
+"dark": false,
+"panel": "QD-OLED 4K",
+"wshare": 0,
+"opt": "LCD + filter 0.9",
+"chroma": 2.08,
+"luma": 4.97
+}
+]

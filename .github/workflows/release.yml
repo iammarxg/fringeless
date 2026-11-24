@@ -1,0 +1,132 @@
+# Runs on every push to main, and publishes only when package.json holds a version that has no tag yet.
+# Notes come from CHANGELOG.md. Stores are optional: a store is used once its variable is set (see store/README.md).
+name: Release
+on:
+  push:
+    branches: [main]
+    paths: [package.json]
+  workflow_dispatch:
+    inputs:
+      stores_only:
+        description: Submit the latest release to the stores again
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency: release
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+      publish: ${{ steps.v.outputs.publish }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - id: v
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(node -p "require('./package.json').version")
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if gh release view "v$version" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"; echo "v$version is already released." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  test:
+    needs: plan
+    if: needs.plan.outputs.publish == 'true'
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    needs: [plan, test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    env:
+      VERSION: ${{ needs.plan.outputs.version }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with: { node-version: 24 }
+      - run: npm ci
+      - run: npm run zip
+      - run: node tools/check-build.mjs
+      - name: Write the notes
+        run: |
+          { node tools/release.mjs notes "$VERSION"
+            echo; echo '### Downloads'; echo
+            echo '| File | For |'; echo '|---|---|'
+            echo "| \`fringeless-$VERSION-chrome.zip\` | Chrome, Edge, Brave, Opera, Vivaldi, Arc and other Chromium browsers |"
+            echo "| \`fringeless-$VERSION-firefox.zip\` | Firefox |"
+            echo "| \`fringeless-$VERSION-sources.zip\` | Source, for store reviewers |"
+            echo; echo '[How to install](https://github.com/'"$GITHUB_REPOSITORY"'#install)'
+          } > "$RUNNER_TEMP/notes.md"
+          cd .output && sha256sum *.zip > SHA256SUMS.txt
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with: { subject-path: .output/*.zip }
+      - name: Tag and publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "v$VERSION" .output/*.zip .output/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "v$VERSION" --notes-file "$RUNNER_TEMP/notes.md"
+
+  stores:
+    needs: [plan, publish]
+    if: ${{ !cancelled() && (needs.publish.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.stores_only)) }}
+    runs-on: ubuntu-latest
+    environment: stores
+    strategy:
+      fail-fast: false
+      matrix:
+        store: [chrome, firefox, edge]
+    env:
+      VERSION: ${{ needs.plan.outputs.version }}
+      READY: ${{ (matrix.store == 'chrome' && vars.CHROME_EXTENSION_ID != '') || (matrix.store == 'firefox' && vars.FIREFOX_READY == 'true') || (matrix.store == 'edge' && vars.EDGE_PRODUCT_ID != '') }}
+    steps:
+      - if: env.READY != 'true'
+        run: echo "${{ matrix.store }} is not connected; skipped." >> "$GITHUB_STEP_SUMMARY"
+      - if: env.READY == 'true'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false, ref: 'v${{ needs.plan.outputs.version }}' }
+      - if: env.READY == 'true'
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with: { node-version: 24 }
+      - if: env.READY == 'true'
+        run: npm ci
+      - if: env.READY == 'true'
+        name: Use the exact files from the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download "v$VERSION" --repo "$GITHUB_REPOSITORY" --dir dist
+          cd dist && sha256sum --check SHA256SUMS.txt
+      - if: env.READY == 'true' && matrix.store == 'chrome'
+        env:
+          CHROME_API_VERSION: v2
+          CHROME_EXTENSION_ID: ${{ vars.CHROME_EXTENSION_ID }}
+          CHROME_PUBLISHER_ID: ${{ vars.CHROME_PUBLISHER_ID }}
+          CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL: ${{ secrets.CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL }}
+          CHROME_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.CHROME_SERVICE_ACCOUNT_PRIVATE_KEY }}
+        run: npx wxt submit --chrome-zip "dist/fringeless-$VERSION-chrome.zip"
+      - if: env.READY == 'true' && matrix.store == 'firefox'
+        env:
+          FIREFOX_EXTENSION_ID: '{6f1c2f0a-5a0e-4f43-9d39-0b6a8e0c7d51}'
+          FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
+        run: |
+          node tools/release.mjs amo "$VERSION" > "$RUNNER_TEMP/amo.json"
+          npx wxt submit --firefox-zip "dist/fringeless-$VERSION-firefox.zip" --firefox-sources-zip "dist/fringeless-$VERSION-sources.zip" --firefox-amo-metadata-file "$RUNNER_TEMP/amo.json"
+      - if: env.READY == 'true' && matrix.store == 'edge'
+        env:
+          EDGE_PRODUCT_ID: ${{ vars.EDGE_PRODUCT_ID }}
+          EDGE_CLIENT_ID: ${{ secrets.EDGE_CLIENT_ID }}
+          EDGE_API_KEY: ${{ secrets.EDGE_API_KEY }}
+        run: npx wxt submit --edge-zip "dist/fringeless-$VERSION-chrome.zip"

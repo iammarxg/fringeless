@@ -1,0 +1,28 @@
+.layout { display: grid; grid-template-columns: 14.5rem minmax(0, 1fr); min-height: 100dvh; }
+nav { position: sticky; top: 0; align-self: start; height: 100dvh; padding: 1.5rem 0.85rem; display: flex; flex-direction: column; gap: 2px; border-inline-end: 1px solid var(--line); }
+nav .brand { padding: 0 0.7rem 1.4rem; }
+nav > button { font: inherit; font-size: var(--step--1); font-weight: 500; border: 0; background: none; color: var(--muted); text-align: start; padding: 0.5rem 0.7rem; border-radius: var(--radius-m); cursor: pointer; transition: color 0.15s, background-color 0.15s; }
+nav > button:hover { color: var(--text); background: var(--surface-2); }
+nav > button[aria-current] { color: var(--accent-ink); background: var(--accent); font-weight: 600; }
+nav .foot { margin-block-start: auto; padding-block-start: 1rem; border-block-start: 1px solid var(--line); }
+main { padding: clamp(1.25rem, 4vw, 3rem); max-width: 62rem; width: 100%; display: grid; gap: 1.75rem; align-content: start; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); padding: 1rem 1.15rem; }
+.item input[type='text'] { width: auto; max-width: 16rem; }
+.paneldef { display: grid; grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+.frame { border: 1px solid var(--line-strong); border-radius: var(--radius-l); overflow: hidden; }
+.custom { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.25rem; }
+.rules { display: grid; gap: 8px; }
+.rule { display: grid; grid-template-columns: minmax(8rem, 1fr) 10rem 10rem auto; gap: 8px; align-items: center; }
+.rule .btn { padding-inline: 0.5rem; }
+.rule.hit { outline: 2px solid var(--text); outline-offset: 4px; border-radius: var(--radius-m); }
+.prose p { max-width: 68ch; }
+@media (max-width: 52rem) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  nav { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 0.9rem 1rem; border-inline-end: 0; border-block-end: 1px solid var(--line); }
+  nav .brand { width: 100%; padding-bottom: 0.4rem; }
+  nav .foot { margin: 0; padding: 0; border: 0; }
+  .two, .paneldef { grid-template-columns: minmax(0, 1fr); }
+  .rule { grid-template-columns: 1fr 1fr; }
+  .seg { flex-direction: column; }
+}

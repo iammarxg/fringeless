@@ -1,0 +1,33 @@
+name: Screen report
+description: How Fringeless looks on your screen, or a model that is missing or wrong
+labels: [screen]
+body:
+  - type: input
+    id: model
+    attributes:
+      label: Screen model
+      placeholder: AW3423DWF
+    validations: { required: true }
+  - type: dropdown
+    id: layout
+    attributes:
+      label: Subpixel layout
+      options: [Not sure, WOLED RWBG, WOLED RGWB, QD-OLED, RGB stripe, Other]
+    validations: { required: true }
+  - type: input
+    id: setup
+    attributes:
+      label: System, browser and scale
+      placeholder: Windows 11, Edge 158, 125%
+    validations: { required: true }
+  - type: dropdown
+    id: result
+    attributes:
+      label: With Fringeless, text is
+      options: [Clearly better, A little better, The same, Worse]
+    validations: { required: true }
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Which look you settled on, close-up photos, or a source for the layout.

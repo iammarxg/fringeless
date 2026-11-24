@@ -1,0 +1,13 @@
+node_modules/
+.output/
+.wxt/
+dist/
+lab/captures/
+lab/.profiles/
+*.log
+.DS_Store
+.output-test/
+lab/results/*.log
+lab/results/e2e.json
+lab/results/smoke.json
+.env*
