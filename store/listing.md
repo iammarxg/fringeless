@@ -25,7 +25,7 @@ WHAT YOU CAN DO
 • Adjust thickness, contrast and softness separately for light text on dark and dark text on light.
 • Run it everywhere, everywhere except some sites, or only where you choose. Give a site its own look.
 • Give each screen its own settings, such as on for your monitor and off for your TV.
-• Find your screen's model and subpixel layout from a list of about 400 models.
+• Find your screen's model and subpixel layout from a list of over 360 models.
 • Hold a button to compare with the original.
 • Pause it, use keyboard shortcuts, sync, and back up to a file.
 

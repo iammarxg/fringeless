@@ -43,7 +43,7 @@ A setup page opens, helps you find your screen, and asks for permission to chang
 - **Looks:** Clean removes the fringes and nothing else. Crisp, Bold and Soft also change the weight or glare. Make your own.
 - **Sites:** run everywhere, everywhere except some sites, or only on sites you choose. Wildcards and regular expressions work.
 - **Screens:** give each screen its own settings, such as on for the monitor and off for the TV.
-- **Detection:** finds your screen's model (Chromium) or lets you search about 400 OLED models. A camera check covers the rest.
+- **Detection:** finds your screen's model (Chromium) or lets you search over 360 OLED models. A camera check covers the rest.
 - **The rest:** pause for a tab or an hour, keyboard shortcuts, dark and light themes, sync, and backup to a file.
 
 ![Four looks to choose from](docs/images/look.png)
