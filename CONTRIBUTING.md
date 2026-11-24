@@ -13,6 +13,7 @@ The most useful help is a [screen report](https://github.com/iammarxg/fringeless
 | `npm run e2e`, `npm run e2e:more` | Drives the built extension in installed Chrome, Edge and Firefox (Windows; Python with Pillow) |
 | `npm run zip` | Store packages |
 | `npm run images` | README and store pictures (after `npm run e2e:build`) |
+| `npm run site`, `npm run site:test` | The website, and its checks |
 | `npm run lab` | Compares techniques; see [docs/lab-findings.md](docs/lab-findings.md) |
 
 Builds made with `FRINGELESS_TEST=1` ask for site access at install. They go to `.output-test` and must never be shipped.
@@ -26,6 +27,7 @@ Builds made with `FRINGELESS_TEST=1` ask for site access at install. They go to 
 | `src/data` | Monitor models |
 | `src/ui`, `src/entrypoints` | Popup, settings, setup page, background |
 | `tests`, `lab` | Unit and browser tests; technique measurements and panel simulation |
+| `site` | The website; it reuses the engine and components from `src` |
 | `store`, `tools` | Store listings; release and image scripts |
 
 ## Changelog and releases

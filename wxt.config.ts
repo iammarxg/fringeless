@@ -8,7 +8,7 @@ export default defineConfig({
   outDir: TEST ? '.output-test' : '.output',
   manifestVersion: 3,
   imports: false,
-  zip: { excludeSources: ['lab/captures/**', 'lab/.profiles/**', 'lab/results/**', '.output-test/**', 'docs/**', 'store/**', 'tools/images/**', '.github/**'] },
+  zip: { excludeSources: ['lab/captures/**', 'lab/.profiles/**', 'lab/results/**', '.output-test/**', 'docs/**', 'store/**', 'site/**', 'tools/images/**', '.github/**'] },
   vite: () => ({ oxc: { jsx: { runtime: 'automatic', importSource: 'preact' } } }) as never,
   manifest: ({ browser }) => ({
     name: 'Fringeless: Clearer text for OLED screens',

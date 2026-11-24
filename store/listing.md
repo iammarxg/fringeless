@@ -6,7 +6,7 @@ Copy from here into each store. Pictures are in [images](images). The name and s
 |---|---|
 | Name | Fringeless: Clearer text for OLED screens |
 | Short description (132 max) | Removes colored fringes from web text on WOLED and QD-OLED screens, and tunes its weight and contrast per site and per screen. |
-| Homepage | https://github.com/iammarxg/fringeless |
+| Homepage | https://fringeless.jeddah.dev |
 | Support | https://github.com/iammarxg/fringeless/issues |
 | Privacy policy | https://github.com/iammarxg/fringeless/blob/main/PRIVACY.md |
 | License | GPL-3.0-only |

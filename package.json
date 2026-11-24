@@ -18,7 +18,7 @@
     "build:firefox": "wxt build -b firefox",
     "build-for-amo": "npm run build:firefox",
     "zip": "wxt zip -b chrome && wxt zip -b firefox",
-    "check": "wxt prepare && tsc --noEmit && node tools/release.mjs check",
+    "check": "wxt prepare && tsc --noEmit && tsc --noEmit -p site && node tools/release.mjs check",
     "test": "vitest run",
     "release": "node tools/release.mjs prepare",
     "e2e:build": "node tests/e2e/build.mjs",
@@ -27,7 +27,10 @@
     "images": "node tools/images/make.mjs",
     "lab": "node lab/runner/run.mjs",
     "lab:cases": "node lab/runner/edge-cases.mjs",
-    "lab:perf": "node lab/runner/perf.mjs"
+    "lab:perf": "node lab/runner/perf.mjs",
+    "site": "vite --config site/vite.config.ts",
+    "site:build": "vite build --config site/vite.config.ts",
+    "site:test": "npm run site:build && node tests/e2e/site.mjs"
   },
   "engines": {
     "node": ">=22"
@@ -38,6 +41,7 @@
     "preact": "^11.2.0",
     "selenium-webdriver": "^4.54.0",
     "typescript": "^7.0.2",
+    "vite": "^8.3.8",
     "vitest": "^5.1.1",
     "wxt": "^0.21.5"
   }

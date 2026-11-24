@@ -12,7 +12,7 @@ A browser extension that removes the colored edges around web text on WOLED and 
 [![CI](https://github.com/iammarxg/fringeless/actions/workflows/ci.yml/badge.svg)](https://github.com/iammarxg/fringeless/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-GPL--3.0-111)](LICENSE)
 
-[Install](#install) | [Features](#features) | [How it works](#how-it-works) | [Limits](#limits) | [Changelog](CHANGELOG.md)
+**[Website and live demo](https://fringeless.jeddah.dev)** | [Install](#install) | [Features](#features) | [How it works](#how-it-works) | [Limits](#limits) | [Changelog](CHANGELOG.md)
 
 </div>
 
