@@ -36,7 +36,7 @@ Click here and type your own.`;
 export function Live({ on, setOn, has }: { on: boolean; setOn: (v: boolean) => void; has: boolean }) {
   const [profiles, setProfiles] = useState<Profile[]>(() => structuredClone(PRESETS));
   const [id, setId] = useState('clean');
-  const [kind, setKind] = useState<'dark' | 'light'>('dark');
+  const [kind, setKind] = useState<'dark' | 'light'>('light');
   const [size, setSize] = useState<'14' | '16' | '20'>('16');
   const lcd = useMemo(() => (env.browser === 'chromium' && !safari ? lcdTextOn() : null), []);
   const p = profiles.find((x) => x.id === id)!;
@@ -54,7 +54,7 @@ export function Live({ on, setOn, has }: { on: boolean; setOn: (v: boolean) => v
       <div class="stack loose controls">
         <Toggle on={on || has} disabled={safari || has} onChange={setOn} label="Fringeless on this page" hint={state} />
         <Looks compact name="site" profiles={profiles} value={id} onPick={setId} />
-        <div class="stack"><Seg label="Text to tune" value={kind} options={[['dark', 'Light text on dark'], ['light', 'Dark text on light']]} onChange={setKind} />
+        <div class="stack"><Seg label="Text to tune" value={kind} options={[['light', 'Dark text on light'], ['dark', 'Light text on dark']]} onChange={setKind} />
           <TuningSliders value={p[kind]} onChange={(t) => setProfiles((all) => all.map((x) => (x.id === id ? { ...x, [kind]: t } : x)))} /></div>
         <div class="row"><button type="button" class="btn" onClick={() => setProfiles(structuredClone(PRESETS))}>Reset looks</button></div>
       </div>

@@ -77,7 +77,7 @@ export function Hero({ layout, setLayout }: { layout: Layout; setLayout: (l: Lay
   const sim = useRef<Simulator | null>(null), motion = useRef<Motion | null>(null), box = useRef<DOMRect | null>(null);
   const [ok, setOk] = useState(true);
   const [text, setText] = useState('Clear little');
-  const [kind, setKind] = useState<'dark' | 'light'>('dark');
+  const [kind, setKind] = useState<'dark' | 'light'>('light');
 
   useEffect(() => {
     const still = matchMedia('(prefers-reduced-motion: reduce)');
@@ -111,7 +111,7 @@ export function Hero({ layout, setLayout }: { layout: Layout; setLayout: (l: Lay
       <label class="field"><span>Type here</span><input type="text" value={text} maxLength={28} spellcheck={false} autocomplete="off" onInput={(e) => setText(e.currentTarget.value)} /></label>
       <div class="field"><span>Panel</span><Select label="Panel" value={layout} options={LAYOUTS.map((id) => ({ value: id, label: NAME[id] }))} onChange={setLayout} /></div>
       <label class="field dist"><span>Distance</span><span class="ends"><span>Subpixels</span><input ref={range} type="range" min={0} max={1} step="any" aria-label="Viewing distance" onInput={(e) => { motion.current?.setDistance(Number(e.currentTarget.value)); if (calm()) motion.current?.still(); }} /><span>Reading</span></span></label>
-      <div class="field"><span>Page</span><Seg label="Page color" value={kind} options={[['dark', 'Dark'], ['light', 'Light']]} onChange={setKind} /></div>
+      <div class="field"><span>Page</span><Seg label="Page color" value={kind} options={[['light', 'Light'], ['dark', 'Dark']]} onChange={setKind} /></div>
       <p class="why" aria-live="polite">{WHY[layout]}</p>
       <p class="small muted fine">A simulation of 16 px text, enlarged even at reading distance so you can see it. Drag across the picture to compare.</p>
     </div>

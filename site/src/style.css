@@ -24,6 +24,7 @@ body { overflow-x: clip; }
 
 /* simulator */
 .stage { position: relative; block-size: clamp(230px, 44vh, 470px); background: #000; overflow: hidden; border-block: 1px solid var(--line-strong); touch-action: pan-y; cursor: ew-resize; user-select: none; }
+.stage.light { background: #fff; }
 .stage canvas { display: block; width: 100%; height: 100%; }
 .stage .nogl { padding: 2rem var(--gut); color: #bbb; }
 .stage .tag { position: absolute; bottom: 14px; font-size: var(--step--1); font-weight: 560; color: #fff; background: rgb(0 0 0 / 0.78); padding: 0.28rem 0.65rem; border-radius: 7px; pointer-events: none; transition: opacity 0.15s; }
@@ -31,6 +32,9 @@ body { overflow-x: clip; }
 .stage .tag.r { right: var(--gut); }
 .split { position: absolute; inset-block: 0; left: 0; width: 44px; will-change: transform; margin-left: -22px; display: grid; place-items: end center; padding-bottom: 14px; outline: none; }
 .split::before { content: ''; position: absolute; inset-block: 0; left: 21px; width: 2px; background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.65); }
+.stage.light .split::before { background: #000; box-shadow: 0 0 0 1.5px #fff; }
+.stage.light .split .grip { background: #000; color: #fff; box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgb(0 0 0 / 0.35); }
+.stage.light .split:focus-visible .grip { outline-color: #000; }
 .split .grip { position: relative; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #fff; color: #000; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.5), 0 6px 24px rgb(0 0 0 / 0.5); }
 .split:focus-visible .grip { outline: 2px solid #fff; outline-offset: 3px; }
 .simbar { display: grid; grid-template-columns: minmax(10rem, 1.1fr) minmax(10rem, 1fr) minmax(15rem, 1.7fr) auto; gap: 1.1rem 1.6rem; align-items: end; padding-block: 1.5rem 0; }

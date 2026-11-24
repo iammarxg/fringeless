@@ -38,6 +38,7 @@ await size(1440, 900); await media('dark'); await p.goto(URL_); await sleep(1000
 const picture = async () => { await sleep(500); const r = await p.ev(`(()=>{scrollTo(0,0);const r=document.querySelector('.stage').getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,scale:1}})()`); return PNG.sync.read(Buffer.from((await p.send('Page.captureScreenshot', { format: 'png', clip: r })).data, 'base64')); };
 const count = async () => { const i = await picture(), r = [[0, 0], [0, 0]]; for (let y = 0; y < i.height - 50; y++) for (let x = 0; x < i.width; x++) { if (Math.abs(x - i.width / 2) < 26) continue; const o = (y * i.width + x) * 4, d = i.data, m = Math.max(d[o], d[o + 1], d[o + 2]), k = x < i.width / 2 ? 0 : 1; if (m > 40) { r[k][0]++; if (m - Math.min(d[o], d[o + 1], d[o + 2]) > 60) r[k][1]++; } } return r; };
 const setRange = (v) => p.ev(`(()=>{const e=document.querySelector('.dist input');e.value=${v};e.dispatchEvent(new Event('input',{bubbles:true}));return 1})()`).then(() => sleep(300));
+check('every example starts on white', (await p.ev(`document.querySelector('.stage').classList.contains('light')&&!!document.querySelector('.grid.light')&&!!document.querySelector('.paper.light')`)));
 for (const kind of ['Dark', 'Light']) {
   await click(kind, '.simbar'); const i = await picture(); let odd = 0; // above the word there is only background
   for (let y = 2; y < 40; y++) for (let x = 4; x < i.width / 2 - 30; x++) { const v = i.data[(y * i.width + x) * 4 + 1]; if (kind === 'Dark' ? v > 12 : v < 235) odd++; }

@@ -18,7 +18,7 @@ async function pixels(src: string): Promise<ImageData> {
 
 /** Real captured pixels. Pointing at one shows the same pixel in both pictures. */
 export function Pixels() {
-  const [kind, setKind] = useState<Kind>('dark');
+  const [kind, setKind] = useState<Kind>('light');
   const [at, setAt] = useState<[number, number]>([16, 9]);
   const [data, setData] = useState<ImageData[] | null>(null);
   const refs = [useRef<HTMLCanvasElement>(null), useRef<HTMLCanvasElement>(null)];
@@ -37,7 +37,7 @@ export function Pixels() {
 
   return <section class="wrap sect pixels" id="pixels">
     <div class="head"><h2>The pixels Chrome really sends</h2><p>These are captures, not drawings: 16 px Segoe UI on Windows with ClearType on. Point at any pixel to read its red, green and blue. Text is gray when all three agree.</p>
-      <Seg label="Page color" value={kind} options={[['dark', 'Dark page'], ['light', 'Light page']]} onChange={setKind} /></div>
+      <Seg label="Page color" value={kind} options={[['light', 'Light page'], ['dark', 'Dark page']]} onChange={setKind} /></div>
     <div class="two">{(['Without Fringeless', 'With Fringeless'] as const).map((name, i) => {
       const c = rgb(i);
       return <figure>
