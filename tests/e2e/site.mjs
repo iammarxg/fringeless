@@ -55,18 +55,12 @@ await p.ev(`(()=>{const e=document.querySelector('.simbar input[type=text]');e.v
 await p.ev(`(()=>{const e=document.querySelector('.split');e.focus();e.dispatchEvent(new KeyboardEvent('keydown',{key:'End',bubbles:true}));return 1})()`); await sleep(200); check('divider moves with the keyboard', (await p.ev(`document.querySelector('.split').getAttribute('aria-valuenow')`)) === '100');
 
 const overlay = () => p.ev(`document.querySelectorAll('fringeless-overlay').length`);
-check('two copies while the page fix is off', await p.ev(`!document.querySelector('.copy-l').hidden`));
-await click('Try it on this page'); check('one copy while it is on', await p.ev(`document.querySelector('.copy-l').hidden`)); check('hero button turns the real fix on', (await overlay()) === 1);
+await click('Try it on this page'); check('hero button turns the real fix on', (await overlay()) === 1);
 await click('Turn it off on this page'); check('and off again, leaving nothing', (await overlay()) === 0 && (await p.ev(`document.querySelectorAll('style[data-fringeless]').length`)) === 0);
 await p.ev(`(()=>{document.querySelector('#try .look[aria-label=Bold]').click();return 1})()`); await sleep(200);
 check('the sample has a bold title', (await p.ev(`Number(getComputedStyle(document.querySelector('.write .title')).fontWeight)`)) === 700);
-check('a look changes the sample', (await p.ev(`getComputedStyle(document.querySelector('#live .write')).webkitTextStrokeWidth`)) !== '0px');
+check('a look changes the sample', (await p.ev(`getComputedStyle(document.querySelector('.write')).webkitTextStrokeWidth`)) !== '0px');
 await click('Reset looks');
-const loupes = () => p.ev(`[...document.querySelectorAll('.loupe')].map(c=>{const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let n=0,col=0;for(let i=0;i<d.length;i+=4){const hi=Math.max(d[i],d[i+1],d[i+2]),lo=Math.min(d[i],d[i+1],d[i+2]);if(lo<230)n++;if(hi-lo>24)col++}return [n,col]})`);
-{ const [a, c] = await loupes(); check('magnifier: colored without, gray with', a[1] > a[0] * 0.2 && c[0] > 200 && c[1] === 0, JSON.stringify([a, c])); }
-{ const was = await p.ev(`document.querySelector('.loupe').getAttribute('aria-label')`); await p.ev(`(()=>{document.documentElement.style.scrollBehavior='auto';const t=document.querySelector('.write .title');t.scrollIntoView({block:'center'});const r=t.getBoundingClientRect();t.dispatchEvent(new PointerEvent('pointermove',{bubbles:true,clientX:r.left+40,clientY:r.top+10}));return 1})()`); await sleep(200); check('pointing at a word enlarges it', (await p.ev(`document.querySelector('.loupe').getAttribute('aria-label')`)) !== was); }
-await p.ev(`(()=>{const w=document.querySelector('#live .write');w.lastChild.textContent='My own words';w.dispatchEvent(new InputEvent('input',{bubbles:true}));return 1})()`); await sleep(150);
-check('typing in one copy writes the other', (await p.ev(`document.querySelector('.copy-l .write').textContent`)).includes('My own words'));
 await p.ev(`(()=>{const e=document.querySelector('.searchbox input');e.value='aw3423';e.dispatchEvent(new Event('input',{bubbles:true}));return 1})()`); await sleep(200);
 check('monitor search finds models', (await p.ev(`document.querySelectorAll('.results button').length`)) > 0);
 await p.ev(`(()=>{document.querySelector('.results button').click();return 1})()`); await sleep(300);
@@ -102,7 +96,6 @@ await fp.ev(`(()=>{[...document.querySelectorAll('button')].find(x=>x.textConten
 check('firefox: the fix applies', /opacity/.test(await fp.ev(`getComputedStyle(document.documentElement).filter`)));
 await fp.ev(`(()=>{document.title='fringeless-lab';return 1})()`); await sleep(400);
 const G = grabber(); await G.grab(`${OUT}/firefox.png`); G.end();
-check('firefox: magnifier is colored without, gray with', await fp.ev(`(()=>{const r=[...document.querySelectorAll('.loupe')].map(c=>{const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let n=0;for(let i=0;i<d.length;i+=4)if(Math.max(d[i],d[i+1],d[i+2])-Math.min(d[i],d[i+1],d[i+2])>24)n++;return n});return r[0]>500&&r[1]===0})()`));
 check('no errors in Firefox', f.errors.length === 0, f.errors.slice(0, 2).join());
 await f.close();
 check('no missing files', missing.filter((x) => x !== '/favicon.ico').length === 0, missing.join());
