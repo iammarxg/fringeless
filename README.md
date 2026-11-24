@@ -37,19 +37,18 @@ A setup page opens, helps you find your screen, and asks for permission to chang
 
 ## Features
 
-| | |
-|---|---|
-| <img src="docs/images/popup-dark.png" width="330" alt="The Fringeless popup"> | **Change it where you read.** Turn it on or off for a site, pick a look, and adjust thickness, contrast and softness separately for light and dark text. Hold a button to compare with the original. **Check this page** counts the colored edge pixels before and after (Chromium). |
+<p align="center"><img src="docs/images/popup-dark.png" width="400" alt="The Fringeless popup"></p>
 
+- **In reach:** turn it on or off for a site, pick a look, and adjust thickness, contrast and softness separately for light and dark text. Hold a button to compare with the original. **Check this page** counts colored edge pixels before and after (Chromium).
 - **Looks:** Clean removes the fringes and nothing else. Crisp, Bold and Soft also change the weight or glare. Make your own.
 - **Sites:** run everywhere, everywhere except some sites, or only on sites you choose. Wildcards and regular expressions work.
 - **Screens:** give each screen its own settings, such as on for the monitor and off for the TV.
 - **Detection:** finds your screen's model (Chromium) or lets you search about 400 OLED models. A camera check covers the rest.
 - **The rest:** pause for a tab or an hour, keyboard shortcuts, dark and light themes, sync, and backup to a file.
 
-| Looks | Screens |
-|---|---|
-| ![Four looks to choose from](docs/images/look.png) | ![Detecting the screen model and its subpixel layout](docs/images/screens.png) |
+![Four looks to choose from](docs/images/look.png)
+
+![Detecting the screen model and its subpixel layout](docs/images/screens.png)
 
 ## Which screens benefit
 

@@ -59,6 +59,7 @@ if (!only || only === 'ui') {
   for (const [n, f, theme] of views) {
     const p = await b.open(b.extPage(f)); await scheme(p, theme); await size(p, 1280, 800); await sleep(1000);
     if (n === 'screens') { await p.ev(`(()=>{[...document.querySelectorAll('button')].find(x=>/Detect/.test(x.textContent))?.click();return 1})()`, true); await sleep(1500); await p.ev(`(()=>{let e=[...document.querySelectorAll('body *')].find(x=>!x.children.length&&/^LG TV/.test(x.textContent));while(e&&!/this screen/.test(e.parentElement.textContent))e=e.parentElement;e?.remove();return 1})()`); await sleep(300); }
+    await size(p, 1281, 800); await sleep(200); await size(p, 1280, 800); await sleep(500);
     await shot(p, `${CAP}/${n}.png`); await p.close();
   }
   await set(base);
