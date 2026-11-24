@@ -1,6 +1,7 @@
 // The changelog is the only source of release notes. Commands:
 //   check            validate CHANGELOG.md and that its newest version matches package.json (used by CI)
 //   notes [version]  print one version's notes (used by the release workflow)
+//   body [version]  print the whole GitHub release text: notes plus download links
 //   amo [version]    print those notes as the JSON addons.mozilla.org expects
 //   prepare <x.y.z>  move "Unreleased" into a dated version and bump package.json and the lockfile
 import { execFileSync } from 'node:child_process';
@@ -51,6 +52,14 @@ export const notes = (versions, version) => {
   return v.body.join('\n').trim();
 };
 
+/** GitHub release text. The file names link straight to the download. */
+export function body(versions, version, repo) {
+  const row = (kind, use) => { const f = `fringeless-${version}-${kind}.zip`; return `| [\`${f}\`](${repo}/releases/download/v${version}/${f}) | ${use} |`; };
+  return [notes(versions, version), '', '### Downloads', '', '| File | For |', '|---|---|',
+    row('chrome', 'Chrome, Edge, Brave, Opera, Vivaldi, Arc and other Chromium browsers'), row('firefox', 'Firefox'), row('sources', 'Source, for store reviewers'),
+    '', `[How to install](${repo}#install)`].join('\n');
+}
+
 /** Pure text step of `prepare`. */
 export function release(text, version, date, repo) {
   const { versions, errors } = parse(text);
@@ -73,11 +82,12 @@ function main([cmd, arg]) {
     if (errors.length) { console.error('CHANGELOG.md\n  ' + errors.join('\n  ')); process.exit(1); }
     console.log(`CHANGELOG.md is fine (${pkg.version})`);
   } else if (cmd === 'notes') console.log(notes(versions, arg ?? pkg.version));
+  else if (cmd === 'body') console.log(body(versions, arg ?? pkg.version, pkg.homepage));
   else if (cmd === 'amo') console.log(JSON.stringify({ version: { release_notes: { 'en-US': notes(versions, arg ?? pkg.version).replace(/^### (.*)$/gm, '$1') } } }));
   else if (cmd === 'prepare') {
     writeFileSync('CHANGELOG.md', release(text, arg ?? '', new Date().toISOString().slice(0, 10), pkg.homepage));
     execFileSync('npm', ['version', arg, '--no-git-tag-version', '--allow-same-version'], { stdio: 'inherit', shell: process.platform === 'win32' });
     console.log(`Ready. Commit, push to main, and the release workflow publishes v${arg}.`);
-  } else { console.error('check | notes | amo | prepare'); process.exit(1); }
+  } else { console.error('check | notes | body | amo | prepare'); process.exit(1); }
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main(process.argv.slice(2));

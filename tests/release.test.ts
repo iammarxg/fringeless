@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error plain JS tool without types
-import { notes, parse, release } from '../tools/release.mjs';
+import { body, notes, parse, release } from '../tools/release.mjs';
 
 const REPO = 'https://github.com/o/r';
 const ok = `# Changelog
@@ -26,6 +26,10 @@ Intro text.
 describe('changelog', () => {
   it('accepts the fixed format', () => expect(parse(ok).errors).toEqual([]));
   it('returns only one version, without links', () => expect(notes(parse(ok).versions, '1.0.0')).toBe('### Added\n\n- First.'));
+  it('links every file in the release text', () => {
+    const t = body(parse(ok).versions, '1.0.0', REPO);
+    for (const k of ['chrome', 'firefox', 'sources']) expect(t).toContain(`[\`fringeless-1.0.0-${k}.zip\`](${REPO}/releases/download/v1.0.0/fringeless-1.0.0-${k}.zip)`);
+  });
   it.each([
     ['unknown section', ok.replace('### Fixed', '### Bugs')],
     ['loose text', ok.replace('- A bug.', 'A bug.')],

@@ -62,14 +62,7 @@ jobs:
       - run: node tools/check-build.mjs
       - name: Write the notes
         run: |
-          { node tools/release.mjs notes "$VERSION"
-            echo; echo '### Downloads'; echo
-            echo '| File | For |'; echo '|---|---|'
-            echo "| \`fringeless-$VERSION-chrome.zip\` | Chrome, Edge, Brave, Opera, Vivaldi, Arc and other Chromium browsers |"
-            echo "| \`fringeless-$VERSION-firefox.zip\` | Firefox |"
-            echo "| \`fringeless-$VERSION-sources.zip\` | Source, for store reviewers |"
-            echo; echo '[How to install](https://github.com/'"$GITHUB_REPOSITORY"'#install)'
-          } > "$RUNNER_TEMP/notes.md"
+          node tools/release.mjs body "$VERSION" > "$RUNNER_TEMP/notes.md"
           cd .output && sha256sum *.zip > SHA256SUMS.txt
       - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with: { subject-path: .output/*.zip }
