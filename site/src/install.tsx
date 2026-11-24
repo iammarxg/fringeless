@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'preact/hooks';
 import { safari } from './live';
 
-declare const __VERSION__: string;
 const REPO = 'https://github.com/iammarxg/fringeless';
-const file = (k: string) => `${REPO}/releases/download/v${__VERSION__}/fringeless-${__VERSION__}-${k}.zip`;
+export const LATEST = `${REPO}/releases/latest`;
+/** GitHub sends this to the newest release, so the site never goes stale. */
+const file = (k: string) => `${LATEST}/download/fringeless-${k}.zip`;
 /** Fill these in when a store approves the listing; the page then links there. */
 const STORE: Partial<Record<Id, string>> = {};
 
@@ -40,7 +41,7 @@ export function Install() {
     <div class="tabs" role="tablist" aria-label="Browser">{BROWSERS.map(([b, n]) => <button type="button" role="tab" aria-selected={b === id} onClick={() => setId(b)}>{n}</button>)}</div>
     {store ? <a class="btn primary big" href={store}>Get it for {name}</a> : <>
       <ol class="steps">
-        <li><h3>Download</h3><a class="btn primary" href={file(ff ? 'firefox' : 'chrome')}>fringeless-{__VERSION__}-{ff ? 'firefox' : 'chrome'}.zip</a>{!ff && <p class="small muted">Unzip it into a folder you will keep.</p>}</li>
+        <li><h3>Download</h3><a class="btn primary" href={file(ff ? 'firefox' : 'chrome')}>fringeless-{ff ? 'firefox' : 'chrome'}.zip</a><p class="small"><a href={LATEST}>What is new in the latest release</a></p>{!ff && <p class="small muted">Unzip it into a folder you will keep.</p>}</li>
         <li><h3>Open this address</h3><Copy text={url} /><p class="small muted">Browsers do not allow links to it.</p></li>
         {ff ? <li><h3>Load the zip</h3><p>Choose <b>Load Temporary Add-on</b> and pick the file. It stays until Firefox closes.</p></li>
           : <li><h3>Load the folder</h3><p>Turn on <b>Developer mode</b>, choose <b>Load unpacked</b>, and pick the folder.</p></li>}

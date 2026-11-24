@@ -3,7 +3,6 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
 const root = import.meta.dirname, repo = resolve(root, '..');
-const pkg = JSON.parse(readFileSync(resolve(repo, 'package.json'), 'utf8')) as { version: string };
 
 export default defineConfig({
   root,
@@ -11,7 +10,6 @@ export default defineConfig({
   // fonts, panel pictures, icons and theme.js are the extension's own
   publicDir: resolve(repo, 'public'),
   resolve: { alias: { 'wxt/browser': resolve(root, 'src/no-browser.ts') } },
-  define: { __VERSION__: JSON.stringify(pkg.version) },
   oxc: { jsx: { runtime: 'automatic', importSource: 'preact' } },
   build: { outDir: resolve(repo, '.output/site'), emptyOutDir: true, target: 'es2022' },
   server: { fs: { allow: [repo] } },

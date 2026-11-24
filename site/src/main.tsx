@@ -7,7 +7,7 @@ import popDark from '../../docs/images/popup-dark.png';
 import popLight from '../../docs/images/popup-light.png';
 import { Finder } from './finder';
 import { Hero, type Layout } from './hero';
-import { Install, detect, linkFor, nameOf, phone } from './install';
+import { Install, LATEST, detect, linkFor, nameOf, phone } from './install';
 import { Live, safari, useFix } from './live';
 import { Pixels } from './pixels';
 
@@ -65,7 +65,7 @@ function Page() {
     </main>
     <footer class="wrap foot">
       <p>Free and open source under GPL-3.0. Made on a WOLED RWBG monitor; tested on Windows in Chrome, Edge, Brave and Firefox. Not affiliated with any monitor or browser maker.</p>
-      <nav aria-label="More"><a href={REPO}>Source</a><a href={`${REPO}/blob/main/CHANGELOG.md`}>Changelog</a><a href={`${REPO}/blob/main/PRIVACY.md`}>Privacy</a><a href={`${REPO}/issues`}>Report a problem</a></nav>
+      <nav aria-label="More"><a href={REPO}>Source</a><a href={LATEST}>Latest release</a><a href={`${REPO}/blob/main/CHANGELOG.md`}>Changelog</a><a href={`${REPO}/blob/main/PRIVACY.md`}>Privacy</a><a href={`${REPO}/issues`}>Report a problem</a></nav>
     </footer>
   </>;
 }

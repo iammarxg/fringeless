@@ -26,12 +26,12 @@ Windows and browsers smooth text for screens whose subpixels run red, green, blu
 
 Works in **all Chromium browsers** (Chrome, Edge, Brave, Opera, Vivaldi, Arc and others, version 131 or newer) and in **Firefox** 140 or newer, on Windows, macOS and Linux.
 
-Store listings are being prepared. Until then, download the zip from the [latest release](https://github.com/iammarxg/fringeless/releases/latest).
+Store listings are being prepared. Until then, download the [latest release](https://github.com/iammarxg/fringeless/releases/latest) with the links below.
 
 | Browser | Steps |
 |---|---|
-| Chromium | Unzip `fringeless-x.y.z-chrome.zip` into a folder you will keep. Open `chrome://extensions`, turn on **Developer mode**, choose **Load unpacked**, and pick the folder. |
-| Firefox | Open `about:debugging#/runtime/this-firefox`, choose **Load Temporary Add-on**, and pick `fringeless-x.y.z-firefox.zip`. It stays until Firefox closes. |
+| Chromium | Download [`fringeless-chrome.zip`](https://github.com/iammarxg/fringeless/releases/latest/download/fringeless-chrome.zip) and unzip it into a folder you will keep. Open `chrome://extensions`, turn on **Developer mode**, choose **Load unpacked**, and pick the folder. |
+| Firefox | Open `about:debugging#/runtime/this-firefox`, choose **Load Temporary Add-on**, and pick the downloaded [`fringeless-firefox.zip`](https://github.com/iammarxg/fringeless/releases/latest/download/fringeless-firefox.zip). It stays until Firefox closes. |
 
 A setup page opens, helps you find your screen, and asks for permission to change text on sites. Tabs that were already open may need a reload.
 

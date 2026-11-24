@@ -69,6 +69,7 @@ await click('See this layout in the simulator'); check('and opens it in the simu
 await p.ev(`(()=>{const e=document.querySelector('.searchbox input');e.value='zzzz';e.dispatchEvent(new Event('input',{bubbles:true}));return 1})()`); await sleep(200);
 check('unknown model offers a report', (await p.ev(`!!document.querySelector('.results .none a')`)));
 for (const n of ['Firefox', 'Brave', 'Chrome']) { await click(n, '.tabs'); check(`install steps for ${n}`, (await p.ev(`document.querySelector('.steps .copy code').textContent`)).startsWith({ Firefox: 'about:', Brave: 'brave:', Chrome: 'chrome:' }[n])); }
+check('downloads follow the latest release', (await p.ev(`[...document.querySelectorAll('a[href$=".zip"]')].map(a=>a.href)`)).every((h) => /\/releases\/latest\/download\/fringeless-(chrome|firefox)\.zip$/.test(h)) && (await p.ev(`document.querySelectorAll('a[href$=".zip"]').length`)) === 2);
 check('images have loaded', (await p.ev(`(async()=>{const a=[...document.images];a.forEach(i=>i.loading='eager');await Promise.all(a.map(i=>i.decode().catch(()=>0)));return a.every(i=>i.naturalWidth>0)})()`)));
 check('images and controls have names', (await p.ev(`[...document.querySelectorAll('button,a,input')].filter(e=>!(e.textContent.trim()||e.getAttribute('aria-label')||e.labels?.length)).length`)) === 0);
 await media('dark', false); await p.goto(URL_); await sleep(2400);
