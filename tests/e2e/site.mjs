@@ -60,6 +60,12 @@ await click('Turn it off on this page'); check('and off again, leaving nothing',
 await p.ev(`(()=>{document.querySelector('#try .look[aria-label=Bold]').click();return 1})()`); await sleep(200);
 check('the sample has a bold title', (await p.ev(`Number(getComputedStyle(document.querySelector('.write .title')).fontWeight)`)) === 700);
 check('a look changes the sample', (await p.ev(`getComputedStyle(document.querySelector('.write')).webkitTextStrokeWidth`)) !== '0px');
+check('the sample has every text size', (await p.ev(`document.querySelectorAll('.write .lab-sample p').length`)) === 10);
+await p.ev(`(()=>{document.querySelector('#try .swatch[aria-label="Night blue"]').click();return 1})()`); await sleep(200);
+check('background color changes the sample and the side being tuned', await p.ev(`getComputedStyle(document.querySelector('.paper')).backgroundColor==='rgb(13, 17, 23)'&&document.querySelector('.paper').classList.contains('dark')&&document.querySelector('#try').innerText.includes('text on dark backgrounds')`));
+await p.ev(`(()=>{const c=document.querySelector('#try .swatch.pick input');c.value='#ffeecc';c.dispatchEvent(new Event('input',{bubbles:true}));return 1})()`); await sleep(200);
+check('any color works', await p.ev(`getComputedStyle(document.querySelector('.paper')).backgroundColor==='rgb(255, 238, 204)'&&document.querySelector('.paper').classList.contains('light')`));
+await p.ev(`(()=>{document.querySelector('#try .swatch[aria-label=White]').click();return 1})()`);
 await click('Reset looks');
 await p.ev(`(()=>{const e=document.querySelector('.searchbox input');e.value='aw3423';e.dispatchEvent(new Event('input',{bubbles:true}));return 1})()`); await sleep(200);
 check('monitor search finds models', (await p.ev(`document.querySelectorAll('.results button').length`)) > 0);
@@ -81,6 +87,10 @@ for (const w of [2560, 390]) { await size(w, 1100); await p.goto(URL_); await sl
 await size(1440, 900); await sleep(400);
 await p.ev(`(()=>{const c=document.querySelector('.stage canvas'),x=c.getContext('webgl2').getExtension('WEBGL_lose_context');x.loseContext();setTimeout(()=>x.restoreContext(),200);return 1})()`); await sleep(1200);
 check('simulator survives a graphics reset', (await count())[0][0] > 500);
+await p.ev(`(()=>{localStorage.setItem('fringeless-theme','light');return 1})()`); await media('dark'); await p.goto(URL_); await sleep(800);
+check('theme follows the system on every visit', await p.ev(`!document.documentElement.hasAttribute('data-theme')&&getComputedStyle(document.body).backgroundColor==='rgb(0, 0, 0)'&&getComputedStyle(document.querySelector('.paper')).backgroundColor==='rgb(255, 255, 255)'`));
+await p.ev(`(()=>{document.querySelector('.theme button[title=Light]').click();return 1})()`); await sleep(200);
+check('the switch still works for this visit', await p.ev(`document.documentElement.dataset.theme==='light'`));
 check('no errors in Chrome', b.errors.length === 0, b.errors.slice(0, 2).join());
 await b.close();
 

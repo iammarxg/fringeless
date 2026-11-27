@@ -14,21 +14,7 @@ h1 { font-size: clamp(2.5rem, 6vw, 3.9rem); }
 .eye .tag { position: absolute; inset-block-start: 10px; inset-inline-end: 10px; z-index: 1; inline-size: 2rem; block-size: 2rem; display: grid; place-items: center; border-radius: 999px; font: 650 var(--step-0) var(--font); background: var(--accent); color: var(--accent-ink); }
 .eye-big { border: 1px solid var(--line-strong); border-radius: var(--radius-m); overflow: hidden; }
 .eye, .eye-big { background: var(--eye-bg); color: var(--eye-fg); }
-.swatches { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.swatch { position: relative; inline-size: 2.6rem; block-size: 2.6rem; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--sw, var(--surface)); color: var(--sw-fg, var(--text)); display: grid; place-items: center; font: 600 var(--step--1) 'Segoe UI', system-ui, sans-serif; cursor: pointer; padding: 0; }
-.swatch[aria-checked='true'], .swatch.on { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--text); }
-.swatch.pick { background: var(--sw, conic-gradient(#f44, #fd4, #4d6, #4cf, #66f, #e4e, #f44)); }
-.swatch.pick span { font-size: 1.2rem; color: var(--sw-fg, #fff); text-shadow: 0 0 3px rgb(0 0 0 / .5); }
-.swatch.pick input { position: absolute; inset: 0; opacity: 0; inline-size: 100%; block-size: 100%; cursor: pointer; border: 0; padding: 0; }
-.swatch.pick:has(input:focus-visible) { outline: 2px solid var(--text); outline-offset: 2px; }
 .eye-text { padding: 1.1rem 1.2rem 1.2rem; }
-.lab-sample { font: 16px/1.4 'Segoe UI', system-ui, sans-serif; }
-.lab-sample p { margin: 0 0 6px; white-space: nowrap; overflow: hidden; }
-.lab-sample p:last-child { margin: 0; }
-.lab-sample .gray { font-size: 13px; color: color-mix(in srgb, var(--eye-fg) 62%, var(--eye-bg)); }
-.lab-sample .link { color: #0645ad; text-decoration: underline; text-underline-offset: 2px; }
-.dark .lab-sample .link { color: #7ab7ff; }
-.lab-sample code { font: 14px Consolas, 'DejaVu Sans Mono', Menlo, monospace; }
 /* the letter gets its own row so it never covers the first line */
 .eye .eye-text { padding-block-start: 3.1rem; }
 .eye .tag { inset-block-start: 12px; inset-inline: 1.2rem auto; inline-size: 1.75rem; block-size: 1.75rem; font-size: var(--step--1); }

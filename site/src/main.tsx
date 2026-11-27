@@ -22,7 +22,7 @@ function Page() {
     <header class="top wrap">
       <a href="#main" class="brand" aria-label="Fringeless"><Wordmark on={on || has} /></a>
       <nav aria-label="Page"><a href="#try">Try it</a><a href="#monitors">Monitors</a><a href="#install">Install</a><a href={REPO}>GitHub</a></nav>
-      <ThemeSwitch />
+      <ThemeSwitch remember={false} />
     </header>
     <main id="main">
       <div class="wrap intro">

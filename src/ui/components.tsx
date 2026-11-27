@@ -41,15 +41,16 @@ const ICON = {
 } as const;
 type Theme = keyof typeof ICON;
 const readTheme = (): Theme => { try { const v = localStorage.getItem(THEME); return v === 'dark' || v === 'light' ? v : 'system'; } catch { return 'system'; } };
-function applyTheme(v: Theme) {
+function applyTheme(v: Theme, remember = true) {
   if (v === 'system') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', v);
-  try { if (v === 'system') localStorage.removeItem(THEME); else localStorage.setItem(THEME, v); } catch { /* applies for this visit */ }
+  if (remember) try { if (v === 'system') localStorage.removeItem(THEME); else localStorage.setItem(THEME, v); } catch { /* applies for this visit */ }
 }
-export function ThemeSwitch() {
-  const [v, set] = useState<Theme>(readTheme());
-  useEffect(() => { const on = (e: StorageEvent) => { if (e.key === THEME) { const t = readTheme(); set(t); applyTheme(t); } }; addEventListener('storage', on); return () => removeEventListener('storage', on); }, []);
+/** remember=false (the website): every visit starts from the system theme and a choice lasts for this visit only. */
+export function ThemeSwitch({ remember = true }: { remember?: boolean }) {
+  const [v, set] = useState<Theme>(remember ? readTheme() : 'system');
+  useEffect(() => { if (!remember) return; const on = (e: StorageEvent) => { if (e.key === THEME) { const t = readTheme(); set(t); applyTheme(t); } }; addEventListener('storage', on); return () => removeEventListener('storage', on); }, []);
   return <div class="theme" role="radiogroup" aria-label="Theme">{(['system', 'dark', 'light'] as const).map((t) => (
-    <button type="button" role="radio" aria-checked={v === t} title={{ system: 'Match system', dark: 'Dark', light: 'Light' }[t]} onClick={() => { set(t); applyTheme(t); }}>
+    <button type="button" role="radio" aria-checked={v === t} title={{ system: 'Match system', dark: 'Dark', light: 'Light' }[t]} onClick={() => { set(t); applyTheme(t, remember); }}>
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={ICON[t]} /></svg>
       <span class="sr">{{ system: 'Match system', dark: 'Dark', light: 'Light' }[t]}</span>
     </button>))}</div>;

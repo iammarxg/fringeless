@@ -1,40 +1,10 @@
 import { useState } from 'preact/hooks';
 import { Scoped, TuningSliders, editProfile } from './components';
+import { BACKGROUNDS, LabSample, Swatches, isDarkBg } from './backgrounds';
 import { PRESETS, restoreLooks, saveLook, type Profile, type Settings } from '../settings/model';
 
-/** Common page backgrounds, with the text color sites usually put on them. */
-const BACKGROUNDS = [
-  { name: 'White', bg: '#ffffff', fg: '#000000' },
-  { name: 'Sepia', bg: '#f4ecd8', fg: '#3b2f22' },
-  { name: 'Black', bg: '#000000', fg: '#ffffff' },
-  { name: 'Dark gray', bg: '#1e1e1e', fg: '#d4d4d4' },
-  { name: 'Night blue', bg: '#0d1117', fg: '#e6edf3' },
-];
-/** Relative luminance of a #rrggbb color. */
-const luminance = (hex: string) => {
-  const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
-  return 0.2126 * c[0]! + 0.7152 * c[1]! + 0.0722 * c[2]!;
-};
-/** Where black and white text have equal contrast. */
-const isDarkBg = (hex: string) => luminance(hex) < 0.179;
 const LETTERS = ['A', 'B', 'C', 'D'];
 const ABOUT: Record<string, string> = { clean: 'fringes removed, nothing else', crisp: 'stronger edges', bold: 'heavier letters', soft: 'less glare' };
-
-/** The kinds of text where fringes and thin strokes show most: small sizes, light weights, code, links, gray captions. */
-export function LabSample() {
-  return <div class="lab-sample">
-    <p style="font-size:11px">11 px: Illiwm HAVE quick brown fox jumps over the lazy dog, 0O8 il1I rn m</p>
-    <p style="font-size:13px">13 px: Illiwm HAVE quick brown fox jumps over the lazy dog</p>
-    <p>16 px: Reading should feel like paper, not colored edges.</p>
-    <p style="font-size:20px">20 px: Illiwm HAVE quick brown fox</p>
-    <p style="font-size:32px">32 px Illiwm HAVE</p>
-    <p style="font-weight:300">Light weight: quick brown fox jumps over</p>
-    <p style="font-weight:700">Bold weight: quick brown fox jumps over</p>
-    <p class="gray">Gray caption text, 13 px, posted 3 hours ago</p>
-    <p><span class="link">A link in a sentence</span> with <b>bold</b> and <i>italic</i> words</p>
-    <p><code>const fill = (il, li) =&gt; il !== li; // 14 px</code></p>
-  </div>;
-}
 
 /** The four built-in looks on the same text, by letter so the name does not sway the choice. Then sliders for the one picked. */
 export function EyeTest({ s, change, hold, onHold }: { s: Settings; change: (fn: (s: Settings) => Settings) => void; hold: boolean; onHold: (v: boolean) => void }) {
@@ -42,7 +12,6 @@ export function EyeTest({ s, change, hold, onHold }: { s: Settings; change: (fn:
   // text on a dark background uses the look's dark-page settings, and the other way round
   const bg = isDarkBg(color.bg) ? 'dark' : 'light';
   const paint = `--eye-bg:${color.bg};--eye-fg:${color.fg}`;
-  const custom = !BACKGROUNDS.some((b) => b.bg === color.bg);
   const [picked, setPicked] = useState<string | null>(null);
   const [saved, setSaved] = useState('');
   // a built-in look someone deleted still takes part; picking it brings it back
@@ -67,14 +36,7 @@ export function EyeTest({ s, change, hold, onHold }: { s: Settings; change: (fn:
 
   return <div class="stack loose">
     <div class="stack tight">
-      <div class="swatches" role="radiogroup" aria-label="Background">
-        {BACKGROUNDS.map((b) => <button type="button" role="radio" aria-checked={b.bg === color.bg} aria-label={b.name} title={b.name} class="swatch" style={`--sw:${b.bg};--sw-fg:${b.fg}`} onClick={() => setColor(b)}><span aria-hidden="true">Aa</span></button>)}
-        <label class={'swatch pick' + (custom ? ' on' : '')} title="Any color" style={custom ? `--sw:${color.bg};--sw-fg:${color.fg}` : ''}>
-          <input type="color" aria-label="Any background color" value={color.bg} onInput={(e) => { const v = e.currentTarget.value; setColor({ name: 'Custom', bg: v, fg: isDarkBg(v) ? '#ffffff' : '#000000' }); }} />
-          <span aria-hidden="true">+</span>
-        </label>
-        <span class="small muted">{custom ? 'Your color' : color.name}</span>
-      </div>
+      <Swatches value={color} onChange={setColor} />
       <p class="small muted">Try the backgrounds you read on most. Light and dark backgrounds keep separate settings, so if you use dark mode, check one of each.</p>
     </div>
     {!chosen && <div class="row">{holdButton}<span class="small muted">Compare all four with how text looks without Fringeless.</span></div>}

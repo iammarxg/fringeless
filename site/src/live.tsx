@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'preact/hooks';
 import { Applier } from '../../src/engine/apply';
 import { lcdTextOn } from '../../src/engine/detect';
 import { PANELS } from '../../src/engine/panels';
 import { PRESETS, type Profile } from '../../src/settings/model';
-import { Looks, Scoped, Seg, Toggle, TuningSliders, env } from '../../src/ui/components';
+import { Looks, Scoped, Toggle, TuningSliders, env } from '../../src/ui/components';
+import { BACKGROUNDS, LabSample, Swatches, isDarkBg, paint } from '../../src/ui/backgrounds';
 
 export const safari = /Safari\//.test(navigator.userAgent) && !/Chrome|Chromium|CriOS|Firefox/.test(navigator.userAgent);
 /** The extension is already working on this page. */
@@ -27,21 +28,17 @@ export function useFix(): [boolean, (v: boolean) => void, boolean] {
 }
 
 const TITLE = 'Bold titles show colored edges too';
-const SAMPLE = `Illinois millilitre, 1lI| rn m. Reading small text for an hour is where thin letters and colored edges start to matter.
-
-The quick brown fox jumps over 1,234 lazy dogs, 0O8B, and five boxing wizards. Try Bold for thin light text, Crisp for a little more bite, or Soft if white on black glares.
-
-Click here and type your own.`;
 
 export function Live({ on, setOn, has }: { on: boolean; setOn: (v: boolean) => void; has: boolean }) {
   const [profiles, setProfiles] = useState<Profile[]>(() => structuredClone(PRESETS));
   const [id, setId] = useState('clean');
-  const [kind, setKind] = useState<'dark' | 'light'>('light');
-  const [size, setSize] = useState<'14' | '16' | '20'>('16');
+  const [color, setColor] = useState(BACKGROUNDS[0]!);
+  // dark backgrounds use a look's light-text settings, light ones its dark-text settings
+  const kind = isDarkBg(color.bg) ? 'dark' : 'light';
   const lcd = useMemo(() => (env.browser === 'chromium' && !safari ? lcdTextOn() : null), []);
   const p = profiles.find((x) => x.id === id)!;
-  const box = useRef<HTMLDivElement>(null);
-  useEffect(() => { const t = document.createElement('div'), b = document.createElement('div'); t.className = 'title'; t.textContent = TITLE; b.textContent = SAMPLE; box.current!.replaceChildren(t, b); }, []);
+  // one element for the page's life, so Preact never redraws over what someone typed
+  const text = useMemo(() => <div class="write" contentEditable role="textbox" aria-multiline="true" aria-label="Sample text you can edit" spellcheck={false}><div class="title">{TITLE}</div><LabSample /></div>, []);
   const state = safari ? 'Safari cannot run Fringeless, but the looks below still show.'
     : has ? 'Fringeless is already running here.'
       : env.os === 'mac' ? 'macOS already draws text in gray, so this switch changes little. The looks still work.'
@@ -54,14 +51,15 @@ export function Live({ on, setOn, has }: { on: boolean; setOn: (v: boolean) => v
       <div class="stack loose controls">
         <Toggle on={on || has} disabled={safari || has} onChange={setOn} label="Fringeless on this page" hint={state} />
         <Looks compact name="site" profiles={profiles} value={id} onPick={setId} />
-        <div class="stack"><Seg label="Text to tune" value={kind} options={[['light', 'Dark text on light'], ['dark', 'Light text on dark']]} onChange={setKind} />
+        <div class="stack"><Swatches value={color} onChange={setColor} />
+          <p class="small muted">Sliders tune text on {kind === 'dark' ? 'dark' : 'light'} backgrounds. Each look keeps both.</p>
           <TuningSliders value={p[kind]} onChange={(t) => setProfiles((all) => all.map((x) => (x.id === id ? { ...x, [kind]: t } : x)))} /></div>
         <div class="row"><button type="button" class="btn" onClick={() => setProfiles(structuredClone(PRESETS))}>Reset looks</button></div>
       </div>
-      <Scoped id="live" profile={p} class={'paper ' + kind}>
-        <div class="paperbar"><span>{p.name}</span><Seg label="Text size" value={size} options={[['14', '14 px'], ['16', '16 px'], ['20', '20 px']]} onChange={setSize} /></div>
-        <div ref={box} class="write" style={`font-size:${size}px`} contentEditable role="textbox" aria-multiline="true" aria-label="Sample text you can edit" spellcheck={false} />
-      </Scoped>
+      <div class={'paper ' + kind} style={paint(color)}><Scoped id="live" profile={p}>
+        <div class="paperbar"><span>{p.name}</span><span class="muted">Click the text to type your own</span></div>
+        {text}
+      </Scoped></div>
     </div>
   </div></section>;
 }

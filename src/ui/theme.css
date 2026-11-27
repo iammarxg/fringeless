@@ -175,3 +175,19 @@ input[type='range']::-moz-range-thumb { width: 16px; height: 16px; border-radius
 .results button { width: 100%; display: flex; justify-content: space-between; gap: 1rem; font: inherit; font-size: var(--step--1); text-align: start; border: 0; background: none; color: var(--text); padding: 0.5rem 0.65rem; border-radius: var(--radius-s); cursor: pointer; }
 .results button:hover, .results button:focus-visible { background: var(--surface-3); }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
+
+/* background picker and lab text, shared by setup and the website */
+.swatches { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.swatch { position: relative; inline-size: 2.6rem; block-size: 2.6rem; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--sw, var(--surface)); color: var(--sw-fg, var(--text)); display: grid; place-items: center; font: 600 var(--step--1) 'Segoe UI', system-ui, sans-serif; cursor: pointer; padding: 0; }
+.swatch[aria-checked='true'], .swatch.on { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--text); }
+.swatch.pick { background: var(--sw, conic-gradient(#f44, #fd4, #4d6, #4cf, #66f, #e4e, #f44)); }
+.swatch.pick span { font-size: 1.2rem; color: var(--sw-fg, #fff); text-shadow: 0 0 3px rgb(0 0 0 / .5); }
+.swatch.pick input { position: absolute; inset: 0; opacity: 0; inline-size: 100%; block-size: 100%; cursor: pointer; border: 0; padding: 0; }
+.swatch.pick:has(input:focus-visible) { outline: 2px solid var(--text); outline-offset: 2px; }
+.lab-sample { font: 16px/1.4 'Segoe UI', system-ui, sans-serif; }
+.lab-sample p { margin: 0 0 6px; white-space: nowrap; overflow: hidden; }
+.lab-sample p:last-child { margin: 0; }
+.lab-sample .gray { font-size: 13px; color: color-mix(in srgb, var(--eye-fg) 62%, var(--eye-bg)); }
+.lab-sample .link { color: #0645ad; text-decoration: underline; text-underline-offset: 2px; }
+.dark .lab-sample .link { color: #7ab7ff; }
+.lab-sample code { font: 14px Consolas, 'DejaVu Sans Mono', Menlo, monospace; }

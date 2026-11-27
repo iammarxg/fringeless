@@ -75,11 +75,14 @@ figcaption { display: grid; gap: 0.6rem; margin-top: 0.9rem; }
 .controls .toggle .small { display: block; min-height: 2.9em; margin-top: 0.15rem; }
 .controls .seg { display: grid; grid-template-columns: 1fr 1fr; justify-self: stretch; }
 .paper { display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line-strong); border-radius: var(--radius-l); overflow: hidden; min-height: 22rem; font-family: 'Segoe UI', system-ui, sans-serif; }
-.paper.dark { background: #0b0b0c; color: #ececec; }
-.paper.light { background: #fff; color: #1b1b1b; }
+.paper { background: var(--eye-bg); color: var(--eye-fg); }
+.paper { grid-template-rows: 1fr; }
+.paper > div { display: grid; grid-template-rows: auto 1fr; }
+.paper .paperbar .muted { font-weight: 450; color: color-mix(in srgb, currentcolor 55%, transparent); }
+.write .lab-sample p { white-space: nowrap; overflow: hidden; }
 .paperbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.7rem 0.8rem 0.7rem 1.4rem; font-family: var(--font); font-size: var(--step--1); font-weight: 600; border-bottom: 1px solid color-mix(in srgb, currentcolor 14%, transparent); }
 .write .title { font-size: 1.6em; font-weight: 700; line-height: 1.25; margin-bottom: 0.6em; }
-.write { white-space: pre-wrap; padding: clamp(1.2rem, 3vw, 2.2rem) 1.4rem; line-height: 1.65; outline: none; max-width: 58ch; overflow-wrap: anywhere; }
+.write { white-space: normal; padding: clamp(1.2rem, 3vw, 2.2rem) 1.4rem; line-height: 1.65; outline: none; max-width: 58ch; overflow-wrap: anywhere; }
 .paper:has(.write:focus-visible) { border-color: var(--text); }
 
 .control { display: grid; grid-template-columns: minmax(0, 384px) minmax(0, 1fr); gap: clamp(2rem, 7vw, 7rem); align-items: center; }
