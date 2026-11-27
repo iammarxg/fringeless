@@ -3,9 +3,10 @@ import { useEffect, useState } from 'preact/hooks';
 import { browser } from 'wxt/browser';
 import '../../ui/theme.css';
 import './style.css';
-import { Looks, PanelPic, PhotoNote, Specimen, ThemeSwitch, Toggle, Wordmark, useSettings, usePageLook } from '../../ui/components';
+import { PanelPic, PhotoNote, ThemeSwitch, Toggle, Wordmark, useSettings, usePageLook } from '../../ui/components';
 import { DetectScreens } from '../../ui/detect-screens';
 import { LayoutTest } from '../../ui/layout-test';
+import { EyeTest } from '../../ui/eye-test';
 import { PANELS, type Panel } from '../../engine/panels';
 import { findPanel, findProfile } from '../../settings/model';
 import { screenInfo } from '../../engine/detect';
@@ -54,9 +55,8 @@ function Welcome() {
 
     <section class="stack">
       <h2>2. Choose how text should look</h2>
-      <p class="muted">There is no correct answer. Pick what reads easiest to you; everything can be adjusted later.</p>
-      <Looks name="welcome" profiles={s.profiles} value={s.profileId} onPick={(id) => change((v) => ({ ...v, profileId: id }))} />
-      <Specimen profile={hold || !on ? null : profile} onHold={setHold} />
+      <p class="muted">The same text, four ways. There is no correct answer: pick what is easiest on your eyes, then fine-tune it. Everything can be changed later.</p>
+      <EyeTest s={s} change={change} hold={hold || !on} onHold={setHold} />
     </section>
 
     <section class="stack">

@@ -62,6 +62,11 @@ if (!only || only === 'ui') {
     await size(p, 1281, 800); await sleep(200); await size(p, 1280, 800); await sleep(500);
     await shot(p, `${CAP}/${n}.png`); await p.close();
   }
+  { // setup's eye test: the four looks on the lab text
+    const p = await b.open(b.extPage('welcome.html')); await scheme(p, 'dark'); await size(p, 1280, 1110); await sleep(1000); await p.ev(`(()=>{document.documentElement.style.scrollbarWidth='none';return 1})()`);
+    await p.ev(`(()=>{[...document.querySelectorAll('h2')].find(x=>x.textContent.startsWith('2.')).scrollIntoView();scrollBy(0,-40);return 1})()`); await sleep(600);
+    await shot(p, `${CAP}/eye-test.png`); await p.close();
+  }
   await set(base);
 }
 
@@ -77,7 +82,7 @@ if (!only || only === 'compose') {
   await render('kind=ba&foot=', 1280, 470, `${DOCS}/before-after.png`);
   await render('kind=popup&w=576', 1280, 800, `${STORE}/2-popup.png`);
   ['look', 'screens', 'sites'].forEach((n, i) => writeFileSync(`${STORE}/${i + 3}-${n}.png`, readFileSync(`${CAP}/${n}.png`)));
-  for (const n of ['look', 'screens', 'sites']) writeFileSync(`${DOCS}/${n}.png`, readFileSync(`${CAP}/${n}.png`));
+  for (const n of ['look', 'screens', 'sites', 'eye-test']) writeFileSync(`${DOCS}/${n}.png`, readFileSync(`${CAP}/${n}.png`));
   await render('kind=small', 440, 280, `${STORE}/promo-440x280.png`);
   await render('kind=wide', 1400, 560, `${STORE}/promo-1400x560.png`);
   await render('kind=wide&f=100&p=34', 1280, 640, `${DOCS}/social-preview.png`);

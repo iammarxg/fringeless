@@ -15,6 +15,7 @@ for (const name of (process.argv[2] ?? 'chrome,firefox').split(',')) {
   const slide = (p, i, v) => p.ev(`(()=>{const e=document.querySelectorAll('input[type=range]')[${i}];e.value=${v};e.dispatchEvent(new Event('input',{bubbles:true}));return 1})()`).then(() => sleep(700));
   const pop = await b.open(b.extPage(`popup.html?tab=${tabId}`)); await sleep(900);
   check('popup shows the site', await pop.ev(`document.body.textContent.includes('On for localhost:8799')`), (await pop.ev('document.body.innerText')).slice(0, 80).replace(/\n/g, ' '));
+  check('popup text has no colored edges either', await pop.ev(`document.querySelectorAll('fringeless-overlay').length===1||/opacity/.test(getComputedStyle(document.documentElement).filter)`));
   await click(pop, 'On for'); let s = await S();
   check('popup switch adds an off rule and the page reacts', s.sites[0]?.action === 'off' && !(await alive()), JSON.stringify(s.sites));
   await click(pop, 'Off for'); s = await S(); check('switching back removes the rule', s.sites.length === 0 && (await alive()));
@@ -66,6 +67,30 @@ for (const name of (process.argv[2] ?? 'chrome,firefox').split(',')) {
   await click(wel, 'Red, green and blue stripes'); await click(wel, 'Use RGB stripe'); check('but can be overruled on purpose', (await S()).screens[0].panel === 'rgb');
   await cfg.ev(`(async()=>{const s=(await ${api}.storage.local.get('settings')).settings;await ${api}.storage.local.set({settings:{...s,screens:[]}});return 1})()`); await sleep(700);
   await click(wel, 'WOLED RWBG');
+  // eye test: four lettered boxes, light first, sliders for the one picked
+  const eye = (js) => wel.ev(`(()=>{const q=(x)=>document.querySelector(x),all=(x)=>[...document.querySelectorAll(x)];${js}})()`);
+  check('eye test shows four lettered looks on white', await eye(`return all('.eye').length===4&&all('.eye .tag').map(t=>t.textContent).join('')==='ABCD'&&getComputedStyle(q('.eye')).backgroundColor==='rgb(255, 255, 255)'&&!q('.eye-grid').innerText.includes('Crisp')`));
+  const holdBtn = `all('button').find(x=>x.textContent.startsWith('Hold to see'))`;
+  await eye(`${holdBtn}.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));return 1`); await sleep(300);
+  check('hold works before picking', await eye(`return !q('.eye-tune')&&q('#eye-crisp > style').textContent===''`));
+  await eye(`${holdBtn}.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));return 1`); await sleep(300);
+  check('and lets go', await eye(`return q('#eye-crisp > style').textContent!==''`));
+  await eye(`all('.eye')[1].click();return 1`); await sleep(400);
+  check('picking B uses Crisp and names it', (await S()).profileId === 'crisp' && (await eye(`return q('.eye-tune h3').textContent.startsWith('B is Crisp')`)));
+  await eye(`q('.swatch[aria-label=Black]').click();return 1`); await sleep(300);
+  check('dark background switch', await eye(`return getComputedStyle(q('.eye')).backgroundColor==='rgb(0, 0, 0)'&&q('.eye-big').classList.contains('dark')`));
+  await eye(`const c=q('.swatch.pick input');c.value='#f4ecd8';c.dispatchEvent(new Event('input',{bubbles:true}));return 1`); await sleep(300);
+  check('any color: light one picks the light settings', await eye(`return getComputedStyle(q('.eye')).backgroundColor==='rgb(244, 236, 216)'&&q('.eye-big').classList.contains('light')`));
+  await eye(`q('.swatch[aria-label="Night blue"]').click();return 1`); await sleep(300);
+  check('night blue is a dark background', await eye(`return getComputedStyle(q('.eye')).backgroundColor==='rgb(13, 17, 23)'&&q('.eye-big').classList.contains('dark')`));
+  const before = (await S()).profiles.find((p) => p.id === 'crisp');
+  await eye(`const r=q('.eye-tune input[type=range]');r.value='70';r.dispatchEvent(new Event('input',{bubbles:true}));return 1`); await sleep(500);
+  const after = (await S()).profiles.find((p) => p.id === 'crisp');
+  check('slider tunes only the dark side of the picked look', after.dark.thickness === 70 && JSON.stringify(after.light) === JSON.stringify(before.light));
+  check('tuning reaches the big sample', await eye(`return parseFloat(getComputedStyle(q('#eye-big p')).webkitTextStrokeWidth)>0`));
+  await click(wel, 'Reset'); await sleep(500);
+  check('reset restores the look', JSON.stringify((await S()).profiles.find((p) => p.id === 'crisp').dark) === JSON.stringify(before.dark));
+  await eye(`all('.eye')[0].click();return 1`); await sleep(400); check('and back to A', (await S()).profileId === 'clean');
   await cfg.ev(`(()=>{location.hash='screens';location.reload();return 1})()`); await sleep(1500);
   const o = await b.open(b.extPage('options.html#screens')); await sleep(700);
   await click(o, 'Add this screen'); s = await S(); check('screen added from settings', s.screens.length === 1 && s.screens[0].match.width > 0);
@@ -97,8 +122,15 @@ for (const name of (process.argv[2] ?? 'chrome,firefox').split(',')) {
   const l = await b.open(b.extPage('options.html#look'));
   check('theme carries over to other pages', await l.ev(`document.documentElement.dataset.theme==='light'`));
   await l.ev(`(()=>{document.querySelector('.theme button[title="Match system"]').click();return 1})()`); await sleep(700);
-  await click(l, 'Duplicate'); s = await S(); check('look duplicated', s.profiles.length === 5 && s.profiles[4].name === 'Clean copy');
-  await click(l, 'Delete'); s = await S(); check('look deleted', s.profiles.length === 4);
+  const ids = async () => (await S()).profiles.map((p) => p.id).join(',');
+  await click(l, 'Save as new look'); s = await S(); check('look saved as a new one', s.profiles.length === 5 && s.profiles[1].name === 'My look 1' && s.profileId === 'clean');
+  await click(l, 'Delete'); s = await S(); check('custom look deleted', s.profiles.length === 4);
+  await click(l, 'Move down'); check('look moved down', (await ids()) === 'crisp,clean,bold,soft');
+  await click(l, 'Move up'); check('and back up', (await ids()) === 'clean,crisp,bold,soft');
+  await click(l, 'Delete'); s = await S(); check('a default look can be deleted', !s.profiles.some((p) => p.id === 'clean') && s.removedLooks.includes('clean') && s.profileId === 'crisp');
+  await click(l, 'Bring them back'); s = await S(); check('and brought back', s.profiles.length === 4 && !s.removedLooks.length);
+  const ip = await b.open('http://127.0.0.1:8799/page.html?scheme=light'); await sleep(900);
+  check('works on 127.0.0.1 too', await ip.ev(`document.querySelectorAll('fringeless-overlay').length===1||/opacity/.test(getComputedStyle(document.documentElement).filter)`));
   check('no errors', b.errors.filter((e) => !/Content-Security/.test(e)).length === 0, b.errors.slice(0, 2).join('|').slice(0, 160));
   await b.close();
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { clean, defaults, findProfile, type Settings } from '../src/settings/model';
+import { clean, defaults, deleteLook, findProfile, moveLook, restoreLooks, saveLook, type Settings } from '../src/settings/model';
 import { hostPattern, matches, resolve, screenRule, setSite, type Context } from '../src/settings/resolve';
 import { buildCss, safeSelector } from '../src/engine/css';
 import { convolution, filterSpec, taps } from '../src/engine/layout-filter';
@@ -129,5 +129,35 @@ describe('fringe measurement', () => {
   it('counts colour only where the two captures differ', () => {
     const native = px([255, 120, 30], [200, 30, 30], [0, 0, 0]), fixed = px([130, 130, 130], [200, 30, 30], [0, 0, 0]);
     expect(fringePixels(native, fixed)).toEqual({ changed: 1, before: 1, after: 0 });
+  });
+});
+
+describe('looks', () => {
+  const site = { pattern: 'a.com', action: 'inherit' as const, profileId: 'crisp' };
+  it('saves a copy right after the original, with a free name', () => {
+    const [s, id] = saveLook(defaults(), 'bold');
+    expect(s.profiles.map((p) => p.id)).toEqual(['clean', 'crisp', 'bold', id, 'soft']);
+    expect(s.profiles[3]!.name).toBe('My look 1');
+    expect(saveLook(s, id)[0].profiles.some((p) => p.name === 'My look 2')).toBe(true);
+  });
+  it('deletes a built-in look for good and lets rules fall back', () => {
+    const s = deleteLook({ ...defaults(), profileId: 'crisp', sites: [site], screens: [] }, 'crisp');
+    expect(s.profiles.map((p) => p.id)).toEqual(['clean', 'bold', 'soft']);
+    expect(s.profileId).toBe('clean');
+    expect(s.sites).toEqual([]);
+    const again = clean(JSON.parse(JSON.stringify(s)));
+    expect(again.profiles.map((p) => p.id)).toEqual(['clean', 'bold', 'soft']);
+    expect(restoreLooks(again).profiles.map((p) => p.id)).toEqual(['clean', 'bold', 'soft', 'crisp']);
+  });
+  it('keeps at least one look', () => {
+    let s = defaults();
+    for (const id of ['clean', 'crisp', 'bold', 'soft']) s = deleteLook(s, id);
+    expect(s.profiles.map((p) => p.id)).toEqual(['soft']);
+    expect(clean({ profiles: [], removedLooks: ['clean', 'crisp', 'bold', 'soft'] }).profiles.map((p) => p.id)).toEqual(['clean']);
+  });
+  it('reorders and keeps the order through storage', () => {
+    const s = moveLook(moveLook(defaults(), 'soft', -1), 'clean', -1);
+    expect(s.profiles.map((p) => p.id)).toEqual(['clean', 'crisp', 'soft', 'bold']);
+    expect(clean(JSON.parse(JSON.stringify(s))).profiles.map((p) => p.id)).toEqual(['clean', 'crisp', 'soft', 'bold']);
   });
 });

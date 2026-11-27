@@ -7,7 +7,7 @@ import { Looks, OffsetArt, PanelPic, PhotoNote, Seg, Select, Slider, Specimen, T
 import { DetectScreens } from '../../ui/detect-screens';
 import { screenInfo } from '../../engine/detect';
 import { safeSelector } from '../../engine/css';
-import { PRESETS, allPanels, clean, defaults, findPanel, findProfile, type Profile, type Settings } from '../../settings/model';
+import { PRESETS, allPanels, clean, defaults, deleteLook, findPanel, findProfile, moveLook, restoreLooks, saveLook, type Profile, type Settings } from '../../settings/model';
 import { matches, screenRule, type ScreenInfo } from '../../settings/resolve';
 
 type Change = (fn: (s: Settings) => Settings) => void;
@@ -31,16 +31,20 @@ function Look({ s, change, id, setId, hold, setHold }: { s: Settings; change: Ch
   const p = findProfile(s, id) ?? s.profiles[0]!;
   const set = (patch: Partial<Profile>) => change((v) => editProfile(v, p.id, patch));
   const preset = PRESETS.find((x) => x.id === p.id);
+  const at = s.profiles.indexOf(p);
   const panel = findPanel(s, screenRule(s, screenInfo())?.panel ?? s.panel);
   const fl = p.filter, setF = (f: Partial<Profile['filter']>) => set({ filter: { ...fl, ...f } });
   return <div class="stack loose">
     <Looks name="options" profiles={s.profiles} value={p.id} onPick={setId} />
     <div class="row" style="gap:8px">
       {s.profileId === p.id ? <span class="muted">Used by default.</span> : <button class="btn primary" onClick={() => change((v) => ({ ...v, profileId: p.id }))}>Use by default</button>}
-      <button class="btn" onClick={() => { const n = uid(); change((v) => ({ ...v, profiles: [...v.profiles, { ...structuredClone(p), id: n, name: p.name + ' copy' }] })); setId(n); }}>Duplicate</button>
-      {preset ? <button class="btn" onClick={() => set(structuredClone(preset))}>Reset to original</button>
-        : <button class="btn" onClick={() => { change((v) => ({ ...v, profiles: v.profiles.filter((x) => x.id !== p.id), profileId: v.profileId === p.id ? 'clean' : v.profileId })); setId('clean'); }}>Delete</button>}
+      <button class="btn" onClick={() => { let n = ''; change((v) => { const [w, id] = saveLook(v, p.id); n = id; return w; }); setId(n); }}>Save as new look</button>
+      <button class="btn" aria-label="Move earlier" disabled={at === 0} onClick={() => change((v) => moveLook(v, p.id, -1))}>Move up</button>
+      <button class="btn" aria-label="Move later" disabled={at === s.profiles.length - 1} onClick={() => change((v) => moveLook(v, p.id, 1))}>Move down</button>
+      {preset && <button class="btn" onClick={() => set(structuredClone(preset))}>Reset to original</button>}
+      <button class="btn" disabled={s.profiles.length <= 1} title={s.profiles.length <= 1 ? 'Keep at least one look' : undefined} onClick={() => { const next = s.profiles[at === 0 ? 1 : at - 1]!.id; change((v) => deleteLook(v, p.id)); setId(next); }}>Delete</button>
     </div>
+    {s.removedLooks.length > 0 && <p class="small muted row" style="gap:8px">Deleted default looks: {s.removedLooks.map((x) => PRESETS.find((q) => q.id === x)?.name).join(', ')}. <button class="btn ghost" onClick={() => change((v) => restoreLooks(v))}>Bring them back</button></p>}
     <Specimen profile={hold ? null : p} id="opt-specimen" onHold={setHold} />
     {!preset && <label class="field"><span>Name</span><input type="text" value={p.name} maxLength={60} onInput={(e) => set({ name: e.currentTarget.value })} /></label>}
     <section class="stack"><h3>Color fringes</h3>

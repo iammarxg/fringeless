@@ -21,7 +21,7 @@ Fringeless removes the colored edges around web text on WOLED and QD-OLED monito
 Browsers smooth text for screens whose subpixels run red, green, blue. These panels arrange theirs differently, so the color meant to sharpen a letter lands beside it. Fringeless makes the browser draw the same text without that color, then lets you adjust it until it reads well.
 
 WHAT YOU CAN DO
-• Pick a look: Clean removes fringes and nothing else. Crisp, Bold and Soft also change weight or glare. Make your own.
+• Pick a look by eye: setup shows Clean, Crisp, Bold and Soft side by side on the same text and on your usual background. Fine-tune it, save your own looks, reorder or delete them.
 • Adjust thickness, contrast and softness separately for light text on dark and dark text on light.
 • Run it everywhere, everywhere except some sites, or only where you choose. Give a site its own look.
 • Give each screen its own settings, such as on for your monitor and off for your TV.
@@ -50,7 +50,7 @@ Not affiliated with any monitor or browser maker.
 |---|---|
 | Category | Functionality & UI |
 | Store icon | `icon-128.png` |
-| Screenshots | `1-before-after.png`, `2-popup.png`, `3-look.png`, `4-screens.png`, `5-sites.png` |
+| Screenshots | `1-before-after.png`, `2-popup.png`, `3-look.png`, `4-screens.png`, `5-sites.png`; Firefox also `6-eye-test.png` |
 | Small promo tile | `promo-440x280.png` |
 | Marquee promo tile | `promo-1400x560.png` |
 
@@ -90,7 +90,7 @@ Notes for the reviewer:
 ```
 Built with WXT (Vite) and Preact. Build: npm ci && npm run build-for-amo. Output: .output/firefox-mv3. Tested with Node 22 and 24; any OS.
 
-The linter's "Unsafe assignment to innerHTML" is inside Preact (unmodified, from npm), for its dangerouslySetInnerHTML feature, which this add-on does not use.
+Preact comes from npm. Its one innerHTML assignment (the dangerouslySetInnerHTML prop, which this add-on does not use) is removed at build time by a small plugin in wxt.config.ts; nothing else is changed.
 
 No data is collected and no network requests are made. Site access is optional and requested during setup. Content is styled only: the add-on adds one style element and, in Firefox, filter: opacity(.9999) on the root element, which makes text draw without LCD smoothing.
 ```

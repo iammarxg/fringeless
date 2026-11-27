@@ -4,6 +4,22 @@ All notable changes, newest first. Every entry sits under Added, Changed, Fixed,
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-27
+
+### Added
+
+- Setup now shows the four looks on a full set of text samples (several sizes, light and bold weights, code and links), labelled A to D so you choose by eye. Try them on five common page backgrounds or any color, then fine-tune the one you pick and save it as your own look.
+- Save as many looks of your own as you like, put them in any order, and delete the built-in ones you don't use (Bring them back restores them).
+- The toolbar popup's own text is now drawn without colored edges too.
+
+### Changed
+
+- Firefox 142 or newer is now required, the first version that understands the add-on's data collection declaration (none collected).
+
+### Security
+
+- The add-on can no longer write HTML markup into its own pages: the unused part of Preact that could do so is removed at build time.
+
 ## [1.0.0] - 2026-11-24
 
 ### Added
@@ -18,5 +34,6 @@ All notable changes, newest first. Every entry sits under Added, Changed, Fixed,
 - Dark and light themes, sync, and backup to a file.
 - Experimental layout filter for QD-OLED and custom panels (Chromium, off by default).
 
-[Unreleased]: https://github.com/iammarxg/fringeless/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/iammarxg/fringeless/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/iammarxg/fringeless/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/iammarxg/fringeless/releases/tag/v1.0.0

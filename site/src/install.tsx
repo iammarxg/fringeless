@@ -37,7 +37,7 @@ export function Install() {
   const [id, setId] = useState<Id>(detect);
   const [, name, url] = BROWSERS.find((b) => b[0] === id)!, ff = id === 'firefox', store = STORE[id];
   return <section class="sect tint" id="install"><div class="wrap">
-    <div class="head"><h2>Install</h2><p>All Chromium browsers (version 131 or newer) and Firefox 140 or newer, on Windows, macOS and Linux.{phone ? ' Phones are not supported; open this page on a computer.' : ''}{safari ? ' Safari is not supported.' : ''}</p></div>
+    <div class="head"><h2>Install</h2><p>All Chromium browsers (version 131 or newer) and Firefox 142 or newer, on Windows, macOS and Linux.{phone ? ' Phones are not supported; open this page on a computer.' : ''}{safari ? ' Safari is not supported.' : ''}</p></div>
     <div class="tabs" role="tablist" aria-label="Browser">{BROWSERS.map(([b, n]) => <button type="button" role="tab" aria-selected={b === id} onClick={() => setId(b)}>{n}</button>)}</div>
     {store ? <a class="btn primary big" href={store}>Get it for {name}</a> : <>
       <ol class="steps">

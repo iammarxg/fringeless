@@ -44,14 +44,14 @@ if (has('ui')) {
   const site = await b.open('https://en.wikipedia.org/wiki/Subpixel_rendering'); await sleep(2500);
   const tabId = await cfg.ev(`(async()=>(await chrome.tabs.query({})).find(t=>(t.url||'').includes('wikipedia')).id)()`);
   const set = (patch) => cfg.ev(`(async()=>{const s=(await chrome.storage.local.get('settings')).settings;await chrome.storage.local.set({settings:{...s,...${JSON.stringify(patch)}}});return 1})()`);
-  const tall = { welcome: 4300, look: 2700, screens: 2100, narrow: 2600 };
+  const tall = { welcome: 5600, look: 2700, screens: 2100, narrow: 2600 };
   const shots = [['welcome', 'welcome.html', 1200], ['look', 'options.html#look', 1200], ['screens', 'options.html#screens', 1200], ['sites', 'options.html#sites', 1200], ['narrow', 'options.html#look', 400], ['popup', `popup.html?tab=${tabId}`, 384]];
   await b.send('Browser.grantPermissions', { permissions: ['windowManagement'], origin: `chrome-extension://${b.extId}` });
   await set({ panel: 'woled-rwbg', sites: [{ pattern: 'docs.google.com', action: 'off', profileId: null }, { pattern: 'github.com', action: 'inherit', profileId: 'bold' }], screens: [{ id: 'a', name: 'LG G4', match: { width: 1111, height: 2222, left: null, top: null }, enabled: false, panel: 'rgb', profileId: null }], customPanels: [{ id: 'c-1', name: 'My laptop', offsets: { r: [-0.2, 0.3], g: [0, 0], b: [0.25, 0.1] } }] });
   for (const scheme of ['light', 'dark']) for (const [n, f, w] of shots) {
     const p = await b.open(b.extPage(f)); await p.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-color-scheme', value: scheme }] });
     await p.send('Emulation.setDeviceMetricsOverride', { width: w, height: tall[n] ?? (n === 'popup' ? 600 : 1000), deviceScaleFactor: 1, mobile: false }); await sleep(700);
-    if (n === 'welcome') { await p.ev(`(()=>{[...document.querySelectorAll('button')].find(x=>x.textContent==='Detect my screens')?.click();[...document.querySelectorAll('button')].find(x=>x.textContent==='Start the check')?.click();return 1})()`, true); await sleep(1500); if (scheme === 'light') { await p.ev(`(()=>{[...document.querySelectorAll('.test .card')][0].click();return 1})()`); await sleep(700); } }
+    if (n === 'welcome') { await p.ev(`(()=>{[...document.querySelectorAll('button')].find(x=>x.textContent==='Detect my screens')?.click();[...document.querySelectorAll('button')].find(x=>x.textContent==='Start the check')?.click();document.querySelectorAll('.eye')[1]?.click();return 1})()`, true); await sleep(1500); if (scheme === 'light') { await p.ev(`(()=>{[...document.querySelectorAll('.test .card')][0].click();return 1})()`); await sleep(700); } }
     if (n === 'sites') { await p.ev(`(()=>{const t=[...document.querySelectorAll('.select .trigger')];t[t.length-1].click();return 1})()`); await sleep(500); }
     const over = await p.ev('document.documentElement.scrollWidth>innerWidth'); if (over) check(`${n} ${scheme} has no sideways scroll`, false);
     writeFileSync(`lab/captures/ui/${n}-${scheme}.png`, Buffer.from((await p.send('Page.captureScreenshot', { format: 'png' })).data, 'base64')); await p.close();

@@ -3,9 +3,10 @@ import { useEffect, useState } from 'preact/hooks';
 import { browser } from 'wxt/browser';
 import '../../ui/theme.css';
 import './style.css';
-import { Looks, Seg, Select, Toggle, TuningSliders, Wordmark, editProfile, env, useSettings } from '../../ui/components';
-import { findProfile } from '../../settings/model';
-import { hostPattern, resolve, setSite, siteRule, type Reason } from '../../settings/resolve';
+import { Looks, Seg, Select, Toggle, TuningSliders, Wordmark, editProfile, env, usePageLook, useSettings } from '../../ui/components';
+import { findPanel, findProfile } from '../../settings/model';
+import { screenInfo } from '../../engine/detect';
+import { hostPattern, resolve, screenRule, setSite, siteRule, type Reason } from '../../settings/resolve';
 import { fringePixels } from '../../engine/measure';
 import type { ProbeReply, TabOverride } from '../../messages';
 
@@ -46,6 +47,9 @@ function Popup() {
       await ask(t.id);
     })();
   }, []);
+  // our own text gets the same treatment as sites, so the popup has no colored edges either
+  const here = s ? screenRule(s, screenInfo()) : null;
+  usePageLook(s ? findProfile(s, here?.profileId ?? s.profileId) : undefined, s ? findPanel(s, here?.panel ?? s.panel) : undefined, !!s?.on && here?.enabled !== false);
   if (!s || !tab) return null;
 
   const host = hostPattern(tab.url);

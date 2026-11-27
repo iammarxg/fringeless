@@ -34,7 +34,10 @@ export interface Settings {
   scope: 'all' | 'listed';
   panel: string;
   profileId: string;
+  /** In the order people arranged them. */
   profiles: Profile[];
+  /** Built-in looks someone deleted, so they are not added back. */
+  removedLooks: string[];
   sites: SiteRule[];
   screens: ScreenRule[];
   customPanels: CustomPanel[];
@@ -59,7 +62,7 @@ export const PRESETS: Profile[] = [
 ];
 
 export const defaults = (): Settings => ({
-  v: 1, on: true, scope: 'all', panel: 'unknown', profileId: 'clean', profiles: structuredClone(PRESETS),
+  v: 1, on: true, scope: 'all', panel: 'unknown', profileId: 'clean', profiles: structuredClone(PRESETS), removedLooks: [],
   sites: [], screens: [], customPanels: [], pauseUntil: 0, sync: false, onboarded: false,
 });
 
@@ -98,15 +101,61 @@ function cleanProfile(x: unknown): Profile | null {
 export function clean(input: unknown): Settings {
   const o = obj(input), d = defaults();
   const profiles = list(o.profiles, 40).map(cleanProfile).filter((p): p is Profile => !!p);
-  for (const p of d.profiles) if (!profiles.some((q) => q.id === p.id)) profiles.push(p);
+  const removedLooks = [...new Set(list(o.removedLooks, 20).filter((x): x is string => PRESETS.some((p) => p.id === x)))];
+  for (const p of d.profiles) if (!profiles.some((q) => q.id === p.id) && !removedLooks.includes(p.id)) profiles.push(p);
+  // there is always at least one look
+  if (!profiles.length) { profiles.push(structuredClone(PRESETS[0]!)); removedLooks.splice(removedLooks.indexOf(PRESETS[0]!.id), 1); }
   const ids = new Set(profiles.map((p) => p.id));
   const pid = (x: unknown) => (typeof x === 'string' && ids.has(x) ? x : null);
   const coord = (x: unknown) => (typeof x === 'number' && Number.isFinite(x) ? x : null);
   return {
-    v: 1, on: bool(o.on, true), scope: pick(o.scope, ['all', 'listed'] as const, 'all'), panel: str(o.panel, d.panel, 60), profileId: pid(o.profileId) ?? 'clean', profiles,
+    v: 1, on: bool(o.on, true), scope: pick(o.scope, ['all', 'listed'] as const, 'all'), panel: str(o.panel, d.panel, 60), profileId: pid(o.profileId) ?? profiles[0]!.id, profiles, removedLooks,
     sites: list(o.sites, 1000).map((x) => { const r = obj(x); return { pattern: str(r.pattern, '', 300).trim(), action: pick(r.action, ['on', 'off', 'inherit'] as const, 'inherit'), profileId: pid(r.profileId) }; }).filter((r) => r.pattern),
     screens: list(o.screens, 20).map((x) => { const r = obj(x), m = obj(r.match); return { id: str(r.id, '', 60), name: str(r.name, 'Screen', 60), match: { width: num(m.width, 0, 0, 40000), height: num(m.height, 0, 0, 40000), left: coord(m.left), top: coord(m.top) }, enabled: bool(r.enabled, true), panel: str(r.panel, 'unknown', 60), profileId: pid(r.profileId) }; }).filter((r) => r.id && r.match.width),
     customPanels: list(o.customPanels, 20).map((x) => { const r = obj(x), f = obj(r.offsets); return { id: str(r.id, '', 60), name: str(r.name, 'Custom panel', 60), offsets: { r: pair(f.r), g: pair(f.g), b: pair(f.b) } }; }).filter((r) => r.id),
     pauseUntil: num(o.pauseUntil, 0, 0, Number.MAX_SAFE_INTEGER), sync: bool(o.sync, false), onboarded: bool(o.onboarded, false),
   };
+}
+
+// --- looks: save, delete, restore, reorder ---
+export const isPreset = (id: string) => PRESETS.some((p) => p.id === id);
+const lookId = () => 'p-' + Math.random().toString(36).slice(2, 10);
+
+/** Saves a copy of a look under a new name, right after it. Returns the new id. */
+export function saveLook(s: Settings, from: string, name?: string): [Settings, string] {
+  const src = findProfile(s, from);
+  if (!src) return [s, from];
+  const id = lookId(), taken = new Set(s.profiles.map((p) => p.name));
+  let n = 1; while (taken.has(`My look ${n}`)) n++;
+  const copy: Profile = { ...structuredClone(src), id, name: (name ?? '').trim().slice(0, 60) || `My look ${n}` };
+  const i = s.profiles.indexOf(src);
+  return [{ ...s, profiles: [...s.profiles.slice(0, i + 1), copy, ...s.profiles.slice(i + 1)] }, id];
+}
+
+/** Removes a look. Rules that used it fall back to the default; the last look cannot go. */
+export function deleteLook(s: Settings, id: string): Settings {
+  if (s.profiles.length <= 1 || !findProfile(s, id)) return s;
+  const profiles = s.profiles.filter((p) => p.id !== id);
+  return {
+    ...s, profiles,
+    profileId: s.profileId === id ? profiles[0]!.id : s.profileId,
+    removedLooks: isPreset(id) ? [...s.removedLooks, id] : s.removedLooks,
+    sites: s.sites.map((r) => (r.profileId === id ? { ...r, profileId: null } : r)).filter((r) => r.action !== 'inherit' || r.profileId),
+    screens: s.screens.map((r) => (r.profileId === id ? { ...r, profileId: null } : r)),
+  };
+}
+
+/** Brings back deleted built-in looks (all, or one), at the end of the list. */
+export function restoreLooks(s: Settings, only?: string): Settings {
+  const back = s.removedLooks.filter((id) => !only || id === only);
+  return { ...s, removedLooks: s.removedLooks.filter((id) => !back.includes(id)), profiles: [...s.profiles, ...PRESETS.filter((p) => back.includes(p.id)).map((p) => structuredClone(p))] };
+}
+
+/** Moves a look one place earlier (-1) or later (1). */
+export function moveLook(s: Settings, id: string, by: -1 | 1): Settings {
+  const i = s.profiles.findIndex((p) => p.id === id), j = i + by;
+  if (i < 0 || j < 0 || j >= s.profiles.length) return s;
+  const profiles = [...s.profiles];
+  [profiles[i], profiles[j]] = [profiles[j]!, profiles[i]!];
+  return { ...s, profiles };
 }

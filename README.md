@@ -24,7 +24,7 @@ Windows and browsers smooth text for screens whose subpixels run red, green, blu
 
 ## Install
 
-Works in **all Chromium browsers** (Chrome, Edge, Brave, Opera, Vivaldi, Arc and others, version 131 or newer) and in **Firefox** 140 or newer, on Windows, macOS and Linux.
+Works in **all Chromium browsers** (Chrome, Edge, Brave, Opera, Vivaldi, Arc and others, version 131 or newer) and in **Firefox** 142 or newer, on Windows, macOS and Linux.
 
 Store listings are being prepared. Until then, download the [latest release](https://github.com/iammarxg/fringeless/releases/latest) with the links below.
 
@@ -40,11 +40,13 @@ A setup page opens, helps you find your screen, and asks for permission to chang
 <p align="center"><img src="docs/images/popup-dark.png" width="400" alt="The Fringeless popup"></p>
 
 - **In reach:** turn it on or off for a site, pick a look, and adjust thickness, contrast and softness separately for light and dark text. Hold a button to compare with the original. **Check this page** counts colored edge pixels before and after (Chromium).
-- **Looks:** Clean removes the fringes and nothing else. Crisp, Bold and Soft also change the weight or glare. Make your own.
+- **Looks:** Clean removes the fringes and nothing else. Crisp, Bold and Soft also change the weight or glare. Setup shows all four on the same text, from 11 to 32 px, on the background you read on, so you can pick by eye and fine-tune. Save as many of your own as you like, reorder them, and delete the ones you don't use.
 - **Sites:** run everywhere, everywhere except some sites, or only on sites you choose. Wildcards and regular expressions work.
 - **Screens:** give each screen its own settings, such as on for the monitor and off for the TV.
 - **Detection:** finds your screen's model (Chromium) or lets you search over 360 OLED models. A camera check covers the rest.
 - **The rest:** pause for a tab or an hour, keyboard shortcuts, dark and light themes, sync, and backup to a file.
+
+![Setup shows the four looks side by side on the same text](docs/images/eye-test.png)
 
 ![Four looks to choose from](docs/images/look.png)
 
